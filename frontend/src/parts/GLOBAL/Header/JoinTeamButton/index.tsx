@@ -8,10 +8,7 @@ import {
 } from '@material-ui/core'
 import useStyles from './styles'
 import { useHistory } from 'react-router'
-
-type JoinTeamButtonProps = {
-  teamPage?: boolean
-}
+import { JoinTeamButtonProps } from './types'
 
 export default function JoinTeamButton({ teamPage }: JoinTeamButtonProps) {
   const { breakpoints } = useTheme()
