@@ -31,21 +31,6 @@ export const useStyles = makeStyles({
     marginTop: 120
   },
 
-  returnToPreviousPageButtonWrapper: {
-    position: 'absolute',
-    top: 10,
-    right: symmetricSideMarginStyleVar,
-    display: 'flex',
-    gap: 5,
-    color: '#FFCDD2',
-    fontWeight: 700,
-    cursor: 'pointer',
-
-    '&:hover': {
-      transform: 'scale(1.08)'
-    }
-  },
-
   heroText: {
     marginBottom: 'clamp(25px, 5vw, 50px)',
     color: 'whitesmoke',
