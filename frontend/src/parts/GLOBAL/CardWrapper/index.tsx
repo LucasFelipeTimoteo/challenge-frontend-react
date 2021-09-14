@@ -1,8 +1,8 @@
 import React from 'react'
 import useStyles from './styles'
-import { ICArdWrapperProps } from './types'
+import { CardWrapperProps } from './types'
 
-export default function CardWrapper({ children }: ICArdWrapperProps) {
+export default function CardWrapper({ children }: CardWrapperProps) {
   const { charactersCardsSection, charactersCardsWrapper } = useStyles()
 
   return (
