@@ -10,10 +10,7 @@ import {
 import wallpaper from '../../../assets/images/wallpaper.avif'
 import useStyles from './styles'
 import { People } from '@material-ui/icons'
-
-type CardProps = {
-  favorited?: boolean
-}
+import { CardProps } from './types'
 
 export default function Card({ favorited }: CardProps) {
   const {
