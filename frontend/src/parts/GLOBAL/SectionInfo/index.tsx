@@ -2,11 +2,7 @@ import React from 'react'
 import SectionResults from './parts/SectionResults'
 import SectionTitle from './parts/SectionTitle'
 import useStyles from './styles'
-
-type SectionInfoProps = {
-  charactersPage?: boolean,
-  characterPage?: boolean,
-}
+import { SectionInfoProps } from './types'
 
 export default function SectionInfo({
   characterPage,
