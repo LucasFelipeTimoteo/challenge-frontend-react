@@ -1,0 +1,12 @@
+body::-webkit-scrollbar {
+  background-color: #1a1a1a;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: whitesmoke;
+  border: 1px solid #1a1a1a;
+}
+
+.App {
+  text-align: center;
+}
