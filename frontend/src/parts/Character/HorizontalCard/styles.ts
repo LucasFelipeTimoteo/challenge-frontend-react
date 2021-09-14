@@ -83,22 +83,6 @@ const useStyles = makeStyles(({ breakpoints }) => ({
 
   conditionalComicHorizontalCardInfo: {
     gap: 8
-  },
-
-  photoViwer: {
-    position: 'absolute',
-    height: '100%',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    gap: 6,
-    textTransform: 'uppercase',
-    textDecoration: 'none',
-    paddingBottom: 10,
-    zIndex: 2,
-    color: 'gray',
-    textShadow :'0 0 1px white'
   }
 }))
 
