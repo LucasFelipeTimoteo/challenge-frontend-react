@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import {
   Card as CardContainer,
   CardContent,
@@ -7,18 +6,17 @@ import {
   useMediaQuery,
   useTheme
 } from '@material-ui/core'
-
 import {
   ArrowBack,
-  CameraAlt,
-  DateRange,
-  MenuBook,
-  Payment
+  CameraAlt
 } from '@material-ui/icons'
-
+import React, { useState } from 'react'
 import wallpaper from '../../../assets/images/wallpaper.avif'
+import ComicInfo from './ComicInfo'
 import useStyles from './styles'
 import { HorizontalCardProps } from './types'
+
+
 
 export default function HorizontalCard({ comic, id }: HorizontalCardProps) {
   const [cardImageFocused, setCardImageFocused] = useState(false)
@@ -36,19 +34,7 @@ export default function HorizontalCard({ comic, id }: HorizontalCardProps) {
     horizontalCardMedia,
     conditionalComicHorizontalCardMedia,
     conditionalCardImageFocusedHorizontalCardMedia,
-
-    comicInfo,
     conditionalComicHorizontalCardInfo,
-
-    comicDateInfo,
-    comicDateIcon,
-
-    comicPagesInfo,
-    comicPagesIcon,
-
-    comicPriceInfo,
-    comicPriceIcon,
-
     photoViwer,
   } = useStyles()
 
@@ -73,26 +59,7 @@ export default function HorizontalCard({ comic, id }: HorizontalCardProps) {
           {`${comic ? 'comic' : 'character'} name`}
         </Typography>
 
-        {
-          comic && (
-            <div className={comicInfo}>
-              <div className={comicDateInfo}>
-                <DateRange className={comicDateIcon} />
-                <Typography>99/99/9999</Typography>
-              </div>
-
-              <div className={comicPagesInfo}>
-                <MenuBook className={comicPagesIcon} />
-                <Typography>99 pages</Typography>
-              </div>
-
-              <div className={comicPriceInfo}>
-                <Payment className={comicPriceIcon} />
-                <Typography>U$ 0.99</Typography>
-              </div>
-            </div>
-          )
-        }
+        {comic && <ComicInfo />}
 
         <Typography variant="body2">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit repudiandae dolorum iure ea necessitatibus repellat consequuntur libero vitae architecto fugit totam sint recusandae laboriosam cumque ut, repellendus ullam vel ab!
