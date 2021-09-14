@@ -1,9 +1,6 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import useStyles from './styles'
-
-type CharacterDataProps = {
-  children: ReactNode
-}
+import { CharacterDataProps } from './types'
 
 export default function CharacterData({ children }: CharacterDataProps) {
   const { characterDataContainer } = useStyles()
