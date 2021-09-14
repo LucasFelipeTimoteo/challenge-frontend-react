@@ -1,7 +1,6 @@
+import { Typography } from '@material-ui/core'
 import React from 'react'
-import { Typography, useMediaQuery, useTheme } from '@material-ui/core'
-import { KeyboardReturn } from '@material-ui/icons'
-import { useHistory } from 'react-router'
+import ReturnPageButton from '../../parts/GLOBAL/Hero/ReturnPageButton'
 import { useStyles } from './styles'
 import { HeroProps } from './types'
 
@@ -11,17 +10,12 @@ export default function Hero({
   charactersPage,
   teamPage
 }: HeroProps) {
-  const { goBack } = useHistory()
-  const { breakpoints } = useTheme()
-  const query = useMediaQuery(`(min-width:${breakpoints.values.md}px)`)
-
   const {
     HeroContainer,
     teamPageConditionalHeroContainer,
     heroContentContainer,
     characterConditionalHeroContentContainer,
     heroText,
-    returnToPreviousPageButtonWrapper
   } = useStyles()
 
   return (
@@ -35,20 +29,8 @@ export default function Hero({
          ${characterPage && characterConditionalHeroContentContainer}`
       }>
 
-        {
-          (!charactersPage && query) && (
-            <div
-              className={returnToPreviousPageButtonWrapper}
-              onClick={goBack}
-            >
-              <Typography>
-                Return to previous page
-              </Typography>
-              <KeyboardReturn />
-            </div>
-          )
-        }
-
+        <ReturnPageButton charactersPage={charactersPage} />
+        
         <Typography
           variant="h1"
           component="h2"
