@@ -1,15 +1,9 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { Typography, useMediaQuery, useTheme } from '@material-ui/core'
 import { KeyboardReturn } from '@material-ui/icons'
 import { useHistory } from 'react-router'
 import { useStyles } from './styles'
-
-type HeroProps = {
-  children?: ReactNode,
-  characterPage?: boolean,
-  charactersPage?: boolean,
-  teamPage?: boolean,
-}
+import { HeroProps } from './types'
 
 export default function Hero({
   children,
