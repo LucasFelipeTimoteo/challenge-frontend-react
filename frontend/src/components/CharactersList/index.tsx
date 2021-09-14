@@ -2,11 +2,7 @@ import React from 'react'
 import Card from '../../parts/GLOBAL/Card'
 import CardWrapper from '../../parts/GLOBAL/CardWrapper'
 import useStyles from './styles'
-
-type CharacterListProps = {
-  favorited?: boolean,
-  teamPage?: boolean
-}
+import { CharacterListProps } from './types'
 
 export default function CharactersList({ favorited, teamPage }: CharacterListProps) {
   const {
