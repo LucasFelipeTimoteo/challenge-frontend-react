@@ -10,7 +10,7 @@ import useStyles from './styles'
 import ToggleThemeButton from '../../parts/GLOBAL/ToggleThemeButton'
 import { Link } from 'react-router-dom'
 import { HeaderProps } from './types'
-import Logo from '../../parts/Header/Logo'
+import Logo from '../../parts/GLOBAL/Header/Logo'
 
 export default function Header({ teamPage }: HeaderProps) {
   const {
