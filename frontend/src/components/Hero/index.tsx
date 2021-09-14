@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core'
+import { Typography, useMediaQuery, useTheme } from '@material-ui/core'
 import React from 'react'
 import ReturnPageButton from '../../parts/GLOBAL/Hero/ReturnPageButton'
 import { useStyles } from './styles'
@@ -10,6 +10,9 @@ export default function Hero({
   charactersPage,
   teamPage
 }: HeroProps) {
+  const { breakpoints } = useTheme()
+  const query = useMediaQuery(`(min-width:${breakpoints.values.md}px)`)
+
   const {
     HeroContainer,
     teamPageConditionalHeroContainer,
@@ -29,8 +32,12 @@ export default function Hero({
          ${characterPage && characterConditionalHeroContentContainer}`
       }>
 
-        <ReturnPageButton charactersPage={charactersPage} />
-        
+        {
+          (!charactersPage && query) && (
+            <ReturnPageButton />
+          )
+        }
+
         <Typography
           variant="h1"
           component="h2"

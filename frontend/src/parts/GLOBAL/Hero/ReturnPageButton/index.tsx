@@ -1,20 +1,12 @@
-import React from 'react'
-import { Typography, useMediaQuery, useTheme } from '@material-ui/core'
-import { useHistory } from 'react-router'
+import { Typography } from '@material-ui/core'
 import { KeyboardReturn } from '@material-ui/icons'
+import React from 'react'
+import { useHistory } from 'react-router'
 import useStyles from './styles'
-import { ReturnPageButtonProps } from './types'
 
-export default function ReturnPageButton({ charactersPage }: ReturnPageButtonProps) {
+export default function ReturnPageButton() {
   const { goBack } = useHistory()
-  const { breakpoints } = useTheme()
-  const query = useMediaQuery(`(min-width:${breakpoints.values.md}px)`)
-
   const { returnToPreviousPageButtonWrapper } = useStyles()
-
-  if (charactersPage && !query) {
-    return null
-  }
 
   return (
     <div
