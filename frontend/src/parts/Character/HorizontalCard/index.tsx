@@ -18,11 +18,7 @@ import {
 
 import wallpaper from '../../../assets/images/wallpaper.avif'
 import useStyles from './styles'
-
-type HorizontalCardProps = {
-  comic?: boolean,
-  id?: string
-}
+import { HorizontalCardProps } from './types'
 
 export default function HorizontalCard({ comic, id }: HorizontalCardProps) {
   const [cardImageFocused, setCardImageFocused] = useState(false)
