@@ -8,10 +8,6 @@ export default function ToggleThemeButton() {
   const { togglepageTheme, pageTheme } = useMUITheme()
   const { toggleThemeButton } = useStyles()
 
-  if (!togglepageTheme) {
-    return null
-  }
-
   return (
     <IconButton onClick={togglepageTheme}>
       {
