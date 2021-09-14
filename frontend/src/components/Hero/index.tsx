@@ -25,9 +25,11 @@ export default function Hero({
   } = useStyles()
 
   return (
-    <div className={`
-      ${HeroContainer}
-      ${teamPage && teamPageConditionalHeroContainer}`} >
+    <div className={
+      `${HeroContainer}
+       ${teamPage && teamPageConditionalHeroContainer}`
+    }>
+
       <div className={
         `${heroContentContainer}
          ${characterPage && characterConditionalHeroContentContainer}`
