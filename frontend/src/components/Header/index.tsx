@@ -38,7 +38,7 @@ export default function Header({ teamPage }: HeaderProps) {
 
         <div className={headerButtonsContainer}>
           <ToggleThemeButton />
-          <JoinTeamButton teamPage={teamPage} />
+          {!teamPage && <JoinTeamButton />}
         </div>
       </Toolbar>
     </AppBar>

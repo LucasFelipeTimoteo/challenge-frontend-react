@@ -8,9 +8,8 @@ import {
 } from '@material-ui/core'
 import useStyles from './styles'
 import { useHistory } from 'react-router'
-import { JoinTeamButtonProps } from './types'
 
-export default function JoinTeamButton({ teamPage }: JoinTeamButtonProps) {
+export default function JoinTeamButton() {
   const { breakpoints } = useTheme()
   const query = useMediaQuery(`(min-width:${breakpoints.values.sm}px)`)
   const { push } = useHistory()
@@ -18,10 +17,6 @@ export default function JoinTeamButton({ teamPage }: JoinTeamButtonProps) {
 
   const goToTeamPage = () => {
     push('/team')
-  }
-
-  if (teamPage) {
-    return null
   }
 
   return (
