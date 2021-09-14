@@ -1,7 +1,6 @@
 import React from 'react'
 import { useMediaQuery, useTheme } from '@material-ui/core'
-import logo from '../../../assets/SVGs/logo.svg'
-
+import logo from '../../../../assets/SVGs/logo.svg'
 
 export default function Logo() {
   const { breakpoints } = useTheme()
