@@ -1,11 +1,7 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 import useStyles from './styles'
-
-type SectionTitleProps = {
-  charactersPage?: boolean,
-  characterPage?: boolean,
-}
+import { SectionTitleProps } from './type'
 
 const sectionTitleDescriptionTitle = (
   characterPage: boolean | undefined,
