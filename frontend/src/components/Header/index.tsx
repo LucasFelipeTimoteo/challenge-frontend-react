@@ -3,6 +3,8 @@ import {
   Toolbar,
   Typography,
   AppBar,
+  useTheme,
+  useMediaQuery,
 } from '@material-ui/core'
 
 import JoinTeamButton from '../../parts/GLOBAL/Header/JoinTeamButton'
@@ -13,6 +15,9 @@ import { HeaderProps } from './types'
 import Logo from '../../parts/GLOBAL/Header/Logo'
 
 export default function Header({ teamPage }: HeaderProps) {
+  const { breakpoints } = useTheme()
+  const query = useMediaQuery(`(min-width:${breakpoints.values.md}px)`)
+
   const {
     appBar,
     headerContainer,
@@ -29,7 +34,8 @@ export default function Header({ teamPage }: HeaderProps) {
           title="Click to go to homepage"
           className={headerMainInformationLink}
         >
-          <Logo />
+
+          {query && <Logo />}
 
           <Typography variant="h1" className={title}>
             Marvel Strike Team
