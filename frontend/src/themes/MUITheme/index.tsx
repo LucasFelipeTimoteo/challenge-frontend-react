@@ -1,6 +1,5 @@
 import React, {
   createContext,
-  ReactNode,
   useContext,
   useMemo,
   useState
@@ -14,24 +13,18 @@ import {
   ThemeProvider
 } from "@material-ui/core";
 
-
-type MUIThemeProviderProps = {
-  children: ReactNode
-}
-
-type MUIThemeProviderValue = {
-  pageTheme: string,
-  togglepageTheme: () => void
-}
+import {
+  MUIThemeProviderProps,
+  MUIThemeProviderValue
+} from "./types";
 
 const MUIThemeContext = createContext({} as MUIThemeProviderValue)
 
 const storageTheme = window.localStorage.getItem('MARVEL_STRIKE_TEAM_THEME')
 
-
 export const MUIThemeProvider = ({ children }: MUIThemeProviderProps) => {
   let pageDefaultTheme: PaletteType = "light"
-  if(storageTheme === "dark"){
+  if (storageTheme === "dark") {
     pageDefaultTheme = storageTheme
   }
 
