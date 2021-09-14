@@ -3,21 +3,16 @@ import {
   Toolbar,
   Typography,
   AppBar,
-  useTheme,
-  useMediaQuery
 } from '@material-ui/core'
 
-import logo from '../../assets/SVGs/logo.svg'
 import JoinTeamButton from '../../parts/GLOBAL/Header/JoinTeamButton'
 import useStyles from './styles'
 import ToggleThemeButton from '../../parts/GLOBAL/ToggleThemeButton'
 import { Link } from 'react-router-dom'
 import { HeaderProps } from './types'
+import Logo from '../../parts/Header/Logo'
 
 export default function Header({ teamPage }: HeaderProps) {
-  const { breakpoints } = useTheme()
-  const query = useMediaQuery(`(min-width:${breakpoints.values.md}px)`)
-
   const {
     appBar,
     headerContainer,
@@ -34,15 +29,7 @@ export default function Header({ teamPage }: HeaderProps) {
           title="Click to go to homepage"
           className={headerMainInformationLink}
         >
-          {query && (
-            <img
-              src={logo}
-              width="68px"
-              height="77px"
-              alt="Logo"
-              title="Ironman face icon"
-            />
-          )}
+          <Logo />
 
           <Typography variant="h1" className={title}>
             Marvel Strike Team
