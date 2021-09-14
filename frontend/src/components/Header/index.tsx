@@ -12,10 +12,7 @@ import JoinTeamButton from '../../parts/GLOBAL/Header/JoinTeamButton'
 import useStyles from './styles'
 import ToggleThemeButton from '../../parts/GLOBAL/ToggleThemeButton'
 import { Link } from 'react-router-dom'
-
-type HeaderProps = {
-  teamPage?: boolean
-}
+import { HeaderProps } from './types'
 
 export default function Header({ teamPage }: HeaderProps) {
   const { breakpoints } = useTheme()
