@@ -4,6 +4,9 @@ import CardWrapper from '../../parts/GLOBAL/CardWrapper'
 import useStyles from './styles'
 import { CharacterListProps } from './types'
 
+import { characters } from '../../mocks/characters.mock.dev'
+
+
 export default function CharactersList({ favorited, teamPage }: CharacterListProps) {
   const {
     charactersListContainer,
@@ -15,20 +18,21 @@ export default function CharactersList({ favorited, teamPage }: CharacterListPro
       ${charactersListContainer}
       ${teamPage && conditionalTeamPageCharactersListContainer}
     `}>
+
       <CardWrapper>
-        <Card favorited={favorited} />
-        <Card favorited={favorited} />
-        <Card favorited={favorited} />
-        <Card favorited={favorited} />
-        <Card favorited={favorited} />
-        <Card favorited={favorited} />
-        <Card favorited={favorited} />
-        <Card favorited={favorited} />
-        <Card favorited={favorited} />
-        <Card favorited={favorited} />
-        <Card favorited={favorited} />
-        <Card favorited={favorited} />
+        {
+          characters.results.map((character: any) => (
+            <Card
+              favorited={favorited}
+              thumbnail={character.thumbnail.path}
+              extension={character.thumbnail.extension}
+              characterName={character.name}
+              characterDescription={character.description}
+            />
+          ))
+        }
       </CardWrapper>
+      
     </div>
   )
 }
