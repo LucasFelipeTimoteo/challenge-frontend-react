@@ -1,11 +1,8 @@
 import { makeStyles } from "@material-ui/core";
-import { CreateCSSProperties, PropsFunc } from "@material-ui/styles";
-import { CSSProperties } from "react";
 import { cardStyleVars } from "../../../themes/globalStyleVariables";
+import { StylesObjectJSS } from "./types";
 
-type IStylesObjectJSS = CSSProperties | CreateCSSProperties<{}> | PropsFunc<{}, CreateCSSProperties<{}>>
-
-const cardFavoriteOrDisfavorButtonSharedStyles: IStylesObjectJSS = {
+const cardFavoriteOrDisfavorButtonSharedStyles: StylesObjectJSS = {
   width: 54,
   height: '54.02px',
   position: 'absolute',
