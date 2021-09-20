@@ -7,12 +7,20 @@ import {
   Typography
 } from '@material-ui/core'
 
-import wallpaper from '../../../assets/images/wallpaper.avif'
 import useStyles from './styles'
 import { People } from '@material-ui/icons'
+import { altCharacterDescription, altCharacterName } from './altTexts'
 import { CardProps } from './types'
 
-export default function Card({ favorited }: CardProps) {
+export default function Card({
+  favorited,
+  thumbnail,
+  extension,
+  characterName,
+  characterDescription
+}: CardProps) {
+  const imagePath = `${thumbnail}.${extension}`
+
   const {
     addFavoritesButton,
     disfavorButton,
@@ -27,8 +35,8 @@ export default function Card({ favorited }: CardProps) {
       <CardContainer className={cardWrapper}>
         <CardMedia
           className={cardMedia}
-          image={wallpaper}
-          title="Character image"
+          image={imagePath}
+          title={`${characterName} image`}
         />
 
         <IconButton
@@ -44,14 +52,14 @@ export default function Card({ favorited }: CardProps) {
           <Typography
             variant="h2"
             component="p"
-            title="Character name"
+            title={`The character name is ${characterName}`}
             className={cardTitle}
           >
-            hero name
+            {characterName || altCharacterName}
           </Typography>
 
-          <Typography variant="body1" title="Character description">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil rerum dolorum earum nobis quae sapiente incidunt quaerat dolore aliquid blanditiis.
+          <Typography variant="body1" title={characterDescription}>
+            {characterDescription || altCharacterDescription}
           </Typography>
         </CardContent>
       </CardContainer>
