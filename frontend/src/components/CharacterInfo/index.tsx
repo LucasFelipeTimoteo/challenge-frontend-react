@@ -1,4 +1,5 @@
 import React from 'react'
+import { characters } from '../../mocks/characters.mock.dev'
 import CharacterData from '../../parts/Character/CharacterData'
 import HorizontalCard from '../../parts/Character/HorizontalCard'
 import useStyles from './styles'
@@ -9,12 +10,19 @@ export default function CharacterInfo() {
   return (
     <div className={characterInfoContainer}>
       <CharacterData>
-        <HorizontalCard comic id="1" />
-        <HorizontalCard comic id="2"/>
-        <HorizontalCard comic id="3"/>
-        <HorizontalCard comic id="4"/>
-        <HorizontalCard comic id="5"/>
-        <HorizontalCard comic id="6"/>
+        {
+          characters.results.map(character => (
+            <HorizontalCard
+            characterThumbnail={character.thumbnail.path}
+            characterThumbnailExtension={character.thumbnail.extension}
+            characterName={character.name}
+            characterDescription={character.description}
+
+            comic
+            comicThumbnail={character.comics.items[0].resourceURI}
+            />
+          ))
+        }
       </CharacterData>
     </div>
   )
