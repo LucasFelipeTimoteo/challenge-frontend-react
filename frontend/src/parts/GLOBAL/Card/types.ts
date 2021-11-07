@@ -2,7 +2,7 @@ import { CreateCSSProperties, PropsFunc } from "@material-ui/styles"
 import { CSSProperties } from "react"
 import { ICharacter } from "../../../types/ICharacters/types"
 
-export type CardProps = {
+export interface ICardProps {
   character: ICharacter,
   thumbnail: string,
   extension: string,
