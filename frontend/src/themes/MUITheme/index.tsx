@@ -23,8 +23,8 @@ const MUIThemeContext = createContext({} as MUIThemeProviderValue)
 const storageTheme = window.localStorage.getItem('MARVEL_STRIKE_TEAM_THEME')
 
 export const MUIThemeProvider = ({ children }: MUIThemeProviderProps) => {
-  let pageDefaultTheme: PaletteType = "light"
-  if (storageTheme === "dark") {
+  let pageDefaultTheme: PaletteType = "dark"
+  if (storageTheme === "light" || storageTheme === "dark") {
     pageDefaultTheme = storageTheme
   }
 
@@ -74,7 +74,7 @@ export const MUIThemeProvider = ({ children }: MUIThemeProviderProps) => {
           fontSize: 42
         },
         h2: {
-          fontSize: 32
+          fontSize: 29
         },
         h6: {
           fontSize: 19
