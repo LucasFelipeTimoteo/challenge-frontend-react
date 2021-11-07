@@ -3,7 +3,19 @@ import { Search } from '@material-ui/icons'
 import React from 'react'
 import useStyles from './styles'
 
-export default function Searchbar() {
+interface ISearchbarProps {
+  searchValue: string,
+  handleSearchValue: (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => void
+  handleSearchKey: () => void
+}
+
+export default function Searchbar({
+  searchValue,
+  handleSearchValue,
+  handleSearchKey
+}: ISearchbarProps) {
   const {
     searchbarWrapper,
     searchbarInputWrapper,
@@ -20,11 +32,14 @@ export default function Searchbar() {
         title="Type a character name, words or letters here to search for it"
         InputProps={{ className: searchbarInnerInput }}
         className={searchbarInputWrapper}
+        onChange={handleSearchValue}
+        value={searchValue}
       />
 
       <IconButton
         aria-label="search"
         className={searchbarButton}
+        onClick={handleSearchKey}
       >
         <Search titleAccess="Click to start search" />
       </IconButton>
