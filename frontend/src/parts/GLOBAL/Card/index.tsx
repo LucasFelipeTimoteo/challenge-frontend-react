@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Card as CardContainer,
   CardContent,
@@ -6,49 +5,105 @@ import {
   IconButton,
   Typography
 } from '@material-ui/core'
-
-import useStyles from './styles'
-import { People } from '@material-ui/icons'
+import { DeleteForever, People } from '@material-ui/icons'
+import React, { forwardRef, memo, useState } from 'react'
+import { useHistory } from 'react-router'
+import { useFavoriteCharacterProvider } from '../../../contexts/favoritedCharacters'
+import { useSeletedUser } from '../../../contexts/selectedCharacter'
 import { altCharacterDescription, altCharacterName } from './altTexts'
-import { CardProps } from './types'
+import useStyles from './styles'
+import { ICardProps } from './types'
 
-export default function Card({
-  favorited,
-  thumbnail,
-  extension,
-  characterName,
-  characterDescription
-}: CardProps) {
-  const imagePath = `${thumbnail}.${extension}`
+const Card = forwardRef<Element, ICardProps>((
+  {
+    character,
+    thumbnail,
+    extension,
+    characterId,
+    characterName,
+    characterDescription,
+    lastVisibleCharacter,
+  },
+  ref
+) => {
+  const history = useHistory()
+  const [cardFocused, setCardFocused] = useState(false)
+  const { handleSelectedCharacterId } = useSeletedUser()
+  const {
+    favoriteCharacters,
+    addFavoriteCharacter,
+    removeFavoriteCharacter
+  } = useFavoriteCharacterProvider()
+
+  const toggleCardFocused = () => {
+    setCardFocused(prev => !prev)
+  }
+
+  const goToCharacterInfoPage = () => {
+    history.push(`character/${characterId}/comics`)
+  }
+
+  const handleRemoveFavoriteCharacter = () => {
+    removeFavoriteCharacter(character)
+  }
+
+  const handleAddFavoriteCharacter = () => {
+    addFavoriteCharacter(character)
+  }
 
   const {
     addFavoritesButton,
     disfavorButton,
     cardMedia,
+    cardMediaOverlay,
     cardTitle,
     cardWrapper,
-    textContentWrapper
+    textContentWrapper,
+    cardDescriptionFullSizeMode,
+    readMoreGradientWrapper,
+    readMoreText
   } = useStyles()
+
+  const imagePath = `${thumbnail}.${extension}`
+  const parsedCharacterDescription = characterDescription.trim()
+
+  const characterIsFavorited = favoriteCharacters.some(favoritedCharacter => (
+    favoritedCharacter.id === characterId
+  ))
 
   return (
     <>
-      <CardContainer className={cardWrapper}>
+      <CardContainer className={cardWrapper} ref={lastVisibleCharacter ? ref : null}>
         <CardMedia
           className={cardMedia}
           image={imagePath}
-          title={`${characterName} image`}
-        />
+          onClick={() => {
+            handleSelectedCharacterId(characterId)
+            goToCharacterInfoPage()
+          }}
+        >
+          <Typography
+            variant="subtitle2"
+            component="p"
+            className={cardMediaOverlay}
+            title={`click here to explore ${characterName} related content`}
+          >
+            Expore character related content
+          </Typography>
+        </CardMedia>
 
         <IconButton
           title={
-            favorited ? "Disfavor character" : "Add character to favorites"
+            characterIsFavorited ? "Disfavor character" : "Add character to favorites"
           }
-          className={favorited ? disfavorButton : addFavoritesButton}
+          onClick={characterIsFavorited ? handleRemoveFavoriteCharacter : handleAddFavoriteCharacter}
+          className={characterIsFavorited ? disfavorButton : addFavoritesButton}
         >
-          <People />
+          {characterIsFavorited ? <DeleteForever /> : <People />}
         </IconButton>
 
-        <CardContent className={textContentWrapper}>
+        <CardContent className={textContentWrapper} onClick={toggleCardFocused}>
+
           <Typography
             variant="h2"
             component="p"
@@ -58,11 +113,33 @@ export default function Card({
             {characterName || altCharacterName}
           </Typography>
 
-          <Typography variant="body1" title={characterDescription}>
-            {characterDescription || altCharacterDescription}
+          <Typography
+            variant="body1"
+            title={parsedCharacterDescription || altCharacterDescription}
+            className={`${cardFocused && cardDescriptionFullSizeMode}`}
+          >
+            {parsedCharacterDescription || altCharacterDescription}
           </Typography>
+
+          <div className={readMoreGradientWrapper}>
+            <Typography
+              variant="caption"
+              component="p"
+              className={readMoreText}
+            >
+              {
+                cardFocused
+                  ?
+                  'click to close full read'
+                  :
+                  'Click to full read'
+              }
+            </Typography>
+          </div>
         </CardContent>
       </CardContainer>
     </>
   )
-}
+})
+
+export default memo(Card)
