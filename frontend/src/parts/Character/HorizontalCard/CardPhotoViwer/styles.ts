@@ -1,10 +1,14 @@
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(({ palette }) => ({
   photoViwer: {
     position: 'absolute',
-    height: '100%',
+    right: 0,
+    bottom: 0,
     width: '100%',
+    minHeight: 70,
+    marginTop: 'auto',
+    background: `linear-gradient(transparent 3px, ${palette.background.paper} 27px)`,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-end',
@@ -16,6 +20,6 @@ const useStyles = makeStyles({
     color: 'gray',
     textShadow: '0 0 1px white'
   }
-})
+}))
 
 export default useStyles
