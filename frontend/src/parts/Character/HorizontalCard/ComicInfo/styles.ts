@@ -7,7 +7,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     gap: 'clamp(9px, 1.4vw, 25px)',
     width: '100%',
 
-    [breakpoints.down(breakpoints.values.sm)]: {
+    [breakpoints.down(breakpoints.values.md)]: {
       flexDirection: 'column',
       gap: 1
     }
