@@ -1,4 +1,4 @@
-export type SectionInfoProps = {
+export interface ISectionInfoProps  {
   charactersPage?: boolean,
   characterPage?: boolean,
   totalSearchResults?: number,
