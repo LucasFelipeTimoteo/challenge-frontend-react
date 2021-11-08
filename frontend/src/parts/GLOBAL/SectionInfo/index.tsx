@@ -1,16 +1,25 @@
+import { FormControlLabel, Switch } from '@material-ui/core'
 import React from 'react'
 import SectionResults from './parts/SectionResults'
 import SectionTitle from './parts/SectionTitle'
 import useStyles from './styles'
-import { SectionInfoProps } from './types'
+import { ISectionInfoProps } from './types'
 
 export default function SectionInfo({
   characterPage,
-  charactersPage
-}: SectionInfoProps) {
+  charactersPage,
+  totalSearchResults,
+  totalResults,
+  searchResultsNotFound,
+  loadingSearchCharacters,
+  toggleLoadMoreData,
+  loadMoreData,
+  searchKey
+}: ISectionInfoProps) {
   const {
     conditionalSectionInfoCharacterPage,
-    sectionInfoContainer
+    sectionInfoContainer,
+    loadMoredataSwitchLabel
   } = useStyles()
 
   return (
@@ -22,7 +31,30 @@ export default function SectionInfo({
         characterPage={characterPage}
         charactersPage={charactersPage}
       />
-      <SectionResults />
+
+      {!searchKey && (
+        <FormControlLabel
+          className={loadMoredataSwitchLabel}
+          label="Load more"
+          title={`Click to ${loadMoreData ? 'disable' : 'activate'} more data load`}
+          control={
+            <Switch
+              size="medium"
+              color="primary"
+              name="load more"
+              checked={loadMoreData}
+              onChange={toggleLoadMoreData}
+            />
+          }
+        />
+      )}
+
+      <SectionResults
+        totalSearchResults={totalSearchResults}
+        totalResults={totalResults}
+        searchResultsNotFound={searchResultsNotFound}
+        loadingSearchCharacters={loadingSearchCharacters}
+      />
     </div>
   )
 }
