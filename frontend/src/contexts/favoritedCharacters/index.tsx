@@ -2,7 +2,7 @@ import { createContext, ReactNode, useContext, useState } from 'react'
 import { ICharacter } from '../../types/ICharacters/types'
 import getStorageFavoriteCharactersOrUseDefault from './utils/getStorageCharactersOrUseDefault'
 
-interface favoriteCharactersContextValues {
+interface IFavoriteCharactersContextValues {
   favoriteCharacters: ICharacter[],
   addFavoriteCharacter: (character: ICharacter) => void,
   removeFavoriteCharacter: (character: ICharacter) => void,
@@ -12,7 +12,7 @@ interface FavoriteCharactersProviderProps {
   children: ReactNode
 }
 
-const FavoriteCharactersContext = createContext({} as favoriteCharactersContextValues)
+const FavoriteCharactersContext = createContext({} as IFavoriteCharactersContextValues)
 
 export function FavoriteCharactersProvider({ children }: FavoriteCharactersProviderProps) {
   const defaultFavoriteCharacters = getStorageFavoriteCharactersOrUseDefault()
