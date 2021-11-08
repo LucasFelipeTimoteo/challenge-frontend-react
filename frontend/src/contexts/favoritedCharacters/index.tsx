@@ -8,13 +8,13 @@ interface IFavoriteCharactersContextValues {
   removeFavoriteCharacter: (character: ICharacter) => void,
 }
 
-interface FavoriteCharactersProviderProps {
+interface IFavoriteCharactersProviderProps {
   children: ReactNode
 }
 
 const FavoriteCharactersContext = createContext({} as IFavoriteCharactersContextValues)
 
-export function FavoriteCharactersProvider({ children }: FavoriteCharactersProviderProps) {
+export function FavoriteCharactersProvider({ children }: IFavoriteCharactersProviderProps) {
   const defaultFavoriteCharacters = getStorageFavoriteCharactersOrUseDefault()
 
   const [favoriteCharacters, setFavoriteCharacters] = useState<ICharacter[]>(defaultFavoriteCharacters)
