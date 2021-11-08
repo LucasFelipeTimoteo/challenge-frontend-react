@@ -1,4 +1,4 @@
-import validateEnvVariables from "../errors/validateEnvVariables"
+import validateEnvVariables from "./errors/validateEnvVariables"
 
 const getEnvVariables = () => {
   const envLimit = process.env.REACT_APP_API_LIMIT
