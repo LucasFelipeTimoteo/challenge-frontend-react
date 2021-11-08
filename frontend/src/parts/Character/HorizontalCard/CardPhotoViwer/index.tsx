@@ -4,17 +4,25 @@ import { ArrowBack, CameraAlt } from '@material-ui/icons'
 import useStyles from './styles'
 
 type CardPhotoViwerProps = {
-  comic?: boolean,
+  comic: boolean,
   cardImageFocused?: boolean,
-  toggleCardImageFocused?: () => void
+  toggleCardImageFocused?: () => void,
+  query: boolean
 }
 
 export default function CardPhotoViwer({
   comic,
   cardImageFocused,
-  toggleCardImageFocused
+  toggleCardImageFocused,
+  query
 }: CardPhotoViwerProps) {
   const { photoViwer } = useStyles()
+
+  if(!query) {
+    return (
+      <div className={photoViwer} />
+    )
+  }
 
   return (
     <div
