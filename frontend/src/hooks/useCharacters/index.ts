@@ -7,10 +7,10 @@ import getStorageResultsNumberOrUseDefault from "./utils/getStorageResultsNumber
 
 export default function useCharacters(inView: boolean, loadMoreData: boolean, searchKey: string) {
   const defaultCharactersValue = getStorageCharactersOrUseDefault()
-  const defaultTotalResultsValue = getStorageResultsNumberOrUseDefault()
+  const defaulttotalCharactersResultsValue = getStorageResultsNumberOrUseDefault()
 
   const [characters, setCharacters] = useState(defaultCharactersValue)
-  const [totalResults, setTotalResults] = useState(defaultTotalResultsValue)
+  const [totalCharactersResults, setTotalCharactersResults] = useState(defaulttotalCharactersResultsValue)
   const [loadingCharacters, setLoadingCharacters] = useState(false)
 
   const firstRenderFetchCondition = (characters.length === 0 && !loadingCharacters)
@@ -48,7 +48,7 @@ export default function useCharacters(inView: boolean, loadMoreData: boolean, se
         const characterList = response.data.results
 
         setCharacters(prev => [...prev, ...characterList])
-        setTotalResults(resultsNumber)
+        setTotalCharactersResults(resultsNumber)
         handleOffset()
         window.localStorage.setItem(
           'MARVEL_STRIKE_TEAM_FETCHED_CHARACTERS',
@@ -83,7 +83,7 @@ export default function useCharacters(inView: boolean, loadMoreData: boolean, se
 
   return {
     characters,
-    totalResults,
+    totalCharactersResults,
     loadingCharacters
   }
 }

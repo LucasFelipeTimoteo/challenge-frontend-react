@@ -5,17 +5,20 @@ import { ISectionResultsProps } from './types'
 
 export default function SectionResults({
   totalSearchResults,
-  totalResults,
+  totalCharactersResults,
   searchResultsNotFound,
-  loadingSearchCharacters
+  loadingSearchCharacters,
+  characterPage,
+  characterComicsCount
 }: ISectionResultsProps) {
   const { sectionResultsText } = useStyles()
-
-  const currentCharactersListTotalResults = totalSearchResults ? totalSearchResults : totalResults
+  const currentListTotalResults = totalSearchResults || (
+    characterPage ? characterComicsCount : totalCharactersResults
+  )
 
   const totalResultsNumberDisplay = (
-    searchResultsNotFound || !currentCharactersListTotalResults || loadingSearchCharacters
-  ) ? '0' : currentCharactersListTotalResults
+    searchResultsNotFound || !currentListTotalResults || loadingSearchCharacters
+  ) ? '0' : currentListTotalResults
 
   return (
     <Typography
