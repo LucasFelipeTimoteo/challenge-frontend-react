@@ -5,7 +5,7 @@ import { ISectionResultsProps } from './types'
 
 export default function SectionResults({
   totalSearchResults,
-  totalCharactersResults,
+  charactersCount,
   searchResultsNotFound,
   loadingSearchCharacters,
   characterPage,
@@ -13,7 +13,7 @@ export default function SectionResults({
 }: ISectionResultsProps) {
   const { sectionResultsText } = useStyles()
   const currentListTotalResults = totalSearchResults || (
-    characterPage ? characterComicsCount : totalCharactersResults
+    characterPage ? characterComicsCount : charactersCount
   )
 
   const totalResultsNumberDisplay = (

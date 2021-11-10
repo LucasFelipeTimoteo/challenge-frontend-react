@@ -1,6 +1,6 @@
 export interface ISectionResultsProps {
   totalSearchResults?: number,
-  totalCharactersResults?: number,
+  charactersCount?: number,
   searchResultsNotFound?: boolean,
   loadingSearchCharacters?: boolean,
   characterPage?: boolean,

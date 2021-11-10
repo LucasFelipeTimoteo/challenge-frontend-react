@@ -18,7 +18,7 @@ export default function Characters() {
   const { ref, inView } = useInView()
   const { loadMoreData, toggleLoadMoreData } = useLoadMoreData()
   const { searchCharactersList, totalSearchResults, loadingSearchCharacters } = useSearchCharactersList({ searchKey })
-  const { characters, loadingCharacters, totalResults } = useCharacters(inView, loadMoreData, searchKey)
+  const { characters, loadingCharacters, charactersCount } = useCharacters(inView, loadMoreData, searchKey)
 
   const searchResultsNotFound = Boolean(searchCharactersList.length === 0 && searchKey && !loadingSearchCharacters)
   const currentCharactersList = (
@@ -39,7 +39,7 @@ export default function Characters() {
       <SectionInfo
         charactersPage
         totalSearchResults={totalSearchResults}
-        totalResults={totalResults}
+        charactersCount={charactersCount}
         searchResultsNotFound={searchResultsNotFound}
         loadingSearchCharacters={loadingSearchCharacters}
         loadMoreData={loadMoreData}
@@ -50,7 +50,6 @@ export default function Characters() {
       <CharactersList
         currentCharactersList={currentCharactersList}
         searchResultsNotFound={searchResultsNotFound}
-        characters={characters}
         loadingSearchCharacters={loadingSearchCharacters}
         ref={ref}
       />
