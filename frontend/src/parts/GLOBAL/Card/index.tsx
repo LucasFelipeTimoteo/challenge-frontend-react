@@ -17,8 +17,8 @@ import { ICardProps } from './types'
 const Card = forwardRef<Element, ICardProps>((
   {
     character,
-    thumbnail,
-    extension,
+    characterThumbnail,
+    characterThumbnailExtension,
     characterId,
     characterName,
     characterDescription,
@@ -64,9 +64,10 @@ const Card = forwardRef<Element, ICardProps>((
     readMoreText
   } = useStyles()
 
-  const imagePath = `${thumbnail}.${extension}`
+  const imagePath = `${characterThumbnail}.${characterThumbnailExtension}`
   const parsedCharacterDescription = characterDescription.trim()
 
+  // optimizar usando o useCallback
   const characterIsFavorited = favoriteCharacters.some(favoritedCharacter => (
     favoritedCharacter.id === characterId
   ))

@@ -4,8 +4,8 @@ import { ICharacter } from "../../../types/ICharacters/types"
 
 export interface ICardProps {
   character: ICharacter,
-  thumbnail: string,
-  extension: string,
+  characterThumbnail: string,
+  characterThumbnailExtension: string,
   characterId: number,
   characterName: string,
   lastVisibleCharacter: boolean
