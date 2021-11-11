@@ -1,4 +1,4 @@
-import { ICharacter } from "../../types/ICharacters/types";
+import { ICharacter } from "../../hooks/useCharacters/types";
 
 export type CharacterListProps = {
   teamPage?: boolean,

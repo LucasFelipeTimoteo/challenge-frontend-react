@@ -1,5 +1,5 @@
 import charactersListTypeGuard from "../../../../hooks/utils/typeGuards/charactersListTypeGuard"
-import { ICharacter } from "../../../../types/ICharacters/types"
+import { ICharacter } from "../../../../hooks/useCharacters/types"
 
 let defaultCharacterValue: ICharacter[] = []
 

@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
-import { ICharacter } from '../../types/ICharacters/types'
+import { ICharacter } from '../../hooks/useCharacters/types'
 import getStorageFavoriteCharactersOrUseDefault from './utils/getStorageCharactersOrUseDefault'
 
 interface IFavoriteCharactersContextValues {

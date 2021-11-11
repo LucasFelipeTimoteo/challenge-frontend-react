@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
-import { ICharacter } from '../../types/ICharacters/types';
+import { ICharacter } from '../../hooks/useCharacters/types';
 
 interface IContextValue {
   selectedCharacter: ICharacter,
