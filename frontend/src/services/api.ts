@@ -7,6 +7,7 @@ interface IMarvelApiInstanceProps {
   hash: () => string,
   handleOffset?: () => string
   nameStartsWith?: string
+  characterId?: string
 }
 
 export default function marvelApiInstance({
@@ -15,7 +16,8 @@ export default function marvelApiInstance({
   timestamp,
   publicKey,
   hash,
-  nameStartsWith
+  nameStartsWith,
+  characterId
 }: IMarvelApiInstanceProps) {
   const api = axios.create({
     method: 'GET',
@@ -26,7 +28,8 @@ export default function marvelApiInstance({
       apikey: publicKey,
       hash: hash(),
       ...(handleOffset && { offset: handleOffset() }),
-      ...(nameStartsWith && { nameStartsWith })
+      ...(nameStartsWith && { nameStartsWith }),
+      ...(characterId && { characters: characterId })
     }
   })
 
