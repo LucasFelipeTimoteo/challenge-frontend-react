@@ -20,7 +20,7 @@ export default function Routes() {
           <Characters />
         </Route>
 
-        <Route path="/character">
+        <Route path="/character/:id/comics">
           <Character />
         </Route>
 
