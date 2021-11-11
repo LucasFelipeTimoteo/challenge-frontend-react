@@ -2,9 +2,10 @@ import md5 from "md5";
 import { useEffect, useState } from "react";
 import marvelApiInstance from "../../services/api";
 import getEnvVariables from "../utils/getEnvVariables";
+import { ICharacterComics } from "./types";
 
 export default function useCharacterComics(characterId: number) {
-  const [characterComics, setCharacterComics] = useState<any[]>([])
+  const [characterComics, setCharacterComics] = useState<ICharacterComics[]>([])
   const [characterComicsCount, setCharacterComicsCount] = useState(0)
 
   useEffect(() => {
