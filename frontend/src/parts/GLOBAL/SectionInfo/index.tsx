@@ -9,12 +9,13 @@ export default function SectionInfo({
   characterPage,
   charactersPage,
   totalSearchResults,
-  totalResults,
+  charactersCount,
   searchResultsNotFound,
   loadingSearchCharacters,
   toggleLoadMoreData,
   loadMoreData,
-  searchKey
+  searchKey,
+  characterComicsCount
 }: ISectionInfoProps) {
   const {
     conditionalSectionInfoCharacterPage,
@@ -32,7 +33,7 @@ export default function SectionInfo({
         charactersPage={charactersPage}
       />
 
-      {!searchKey && (
+      {(!searchKey && charactersPage) && (
         <FormControlLabel
           className={loadMoredataSwitchLabel}
           label="Load more"
@@ -51,9 +52,11 @@ export default function SectionInfo({
 
       <SectionResults
         totalSearchResults={totalSearchResults}
-        totalResults={totalResults}
+        charactersCount={charactersCount}
         searchResultsNotFound={searchResultsNotFound}
         loadingSearchCharacters={loadingSearchCharacters}
+        characterPage={characterPage}
+        characterComicsCount={characterComicsCount}
       />
     </div>
   )
