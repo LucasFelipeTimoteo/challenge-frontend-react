@@ -28,7 +28,7 @@ const Card = forwardRef<Element, ICardProps>((
 ) => {
   const history = useHistory()
   const [cardFocused, setCardFocused] = useState(false)
-  const { handleSelectedCharacterId } = useSeletedUser()
+  const { handleSelectedCharacter } = useSeletedUser()
   const {
     favoriteCharacters,
     addFavoriteCharacter,
@@ -79,7 +79,7 @@ const Card = forwardRef<Element, ICardProps>((
           className={cardMedia}
           image={imagePath}
           onClick={() => {
-            handleSelectedCharacterId(characterId)
+            handleSelectedCharacter(character)
             goToCharacterInfoPage()
           }}
         >

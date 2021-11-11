@@ -1,8 +1,9 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
+import { ICharacter } from '../../types/ICharacters/types';
 
 interface IContextValue {
-  selectedCharacterId: number,
-  handleSelectedCharacterId: (userId: number) => void
+  selectedCharacter: ICharacter,
+  handleSelectedCharacter: (selectedUser: ICharacter) => void
 }
 
 interface ISelectedCharacterProps {
@@ -12,13 +13,13 @@ interface ISelectedCharacterProps {
 const selectedCharacterContext = createContext<IContextValue>({} as IContextValue)
 
 export function SelectedCharacterProvider({ children }: ISelectedCharacterProps) {
-  const [selectedCharacterId, setSelectedCharacterId] = useState<number>(NaN)
+  const [selectedCharacter, setSelectedCharacter] = useState({} as ICharacter)
 
-  const handleSelectedCharacterId = (userId: number) => {
-    setSelectedCharacterId(userId)
+  const handleSelectedCharacter = (selectedUser: ICharacter) => {
+    setSelectedCharacter(selectedUser)
   }
 
-  const contextValue = { selectedCharacterId, handleSelectedCharacterId }
+  const contextValue = { selectedCharacter, handleSelectedCharacter }
 
   return (
     <selectedCharacterContext.Provider value={contextValue}>
@@ -28,7 +29,7 @@ export function SelectedCharacterProvider({ children }: ISelectedCharacterProps)
 }
 
 export const useSeletedUser = () => {
-  const { selectedCharacterId, handleSelectedCharacterId } = useContext(selectedCharacterContext)
+  const { selectedCharacter, handleSelectedCharacter } = useContext(selectedCharacterContext)
 
-  return { selectedCharacterId, handleSelectedCharacterId }
+  return { selectedCharacter, handleSelectedCharacter }
 }
