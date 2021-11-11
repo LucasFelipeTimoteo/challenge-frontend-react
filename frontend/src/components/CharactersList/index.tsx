@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Card from '../../parts/GLOBAL/Card'
 import CardWrapper from '../../parts/GLOBAL/CardWrapper'
 import useStyles from './styles'
 import { CharacterListProps } from './types'
 
-import { characters } from '../../mocks/characters.mock.dev'
+const CharactersList = forwardRef<Element, CharacterListProps>((
+  {
+    teamPage,
+    currentCharactersList,
+    searchResultsNotFound,
+    loadingSearchCharacters,
+  },
+  ref
+) => {
 
-
-export default function CharactersList({ favorited, teamPage }: CharacterListProps) {
   const {
     charactersListContainer,
     conditionalTeamPageCharactersListContainer
@@ -15,24 +21,36 @@ export default function CharactersList({ favorited, teamPage }: CharacterListPro
 
   return (
     <div className={`
-      ${charactersListContainer}
-      ${teamPage && conditionalTeamPageCharactersListContainer}
-    `}>
+        ${charactersListContainer}
+        ${teamPage && conditionalTeamPageCharactersListContainer}
+        `}>
 
       <CardWrapper>
         {
-          characters.results.map((character: any) => (
-            <Card
-              favorited={favorited}
-              thumbnail={character.thumbnail.path}
-              extension={character.thumbnail.extension}
-              characterName={character.name}
-              characterDescription={character.description}
-            />
-          ))
+          (!searchResultsNotFound && !loadingSearchCharacters) && (
+            currentCharactersList.map((character, characterIndex, charactersArray) => {
+              const lastVisibleCharacter = character.id === charactersArray[charactersArray.length - 1].id
+
+              return (
+                <Card
+                  character={character}
+                  characterThumbnail={character.thumbnail.path}
+                  characterThumbnailExtension={character.thumbnail.extension}
+                  characterId={character.id}
+                  characterName={character.name}
+                  characterDescription={character.description}
+
+                  key={character.id}
+                  lastVisibleCharacter={lastVisibleCharacter}
+                  ref={ref}
+                />
+              )
+            })
+          )
         }
       </CardWrapper>
-      
     </div>
   )
-}
+})
+
+export default CharactersList
