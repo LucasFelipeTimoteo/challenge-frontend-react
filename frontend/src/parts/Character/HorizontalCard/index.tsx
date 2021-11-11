@@ -8,18 +8,29 @@ import {
 } from '@material-ui/core'
 
 import React, { useState } from 'react'
-import wallpaper from '../../../assets/images/wallpaper.avif'
+import { useSeletedUser } from '../../../contexts/selectedCharacter'
 import CardPhotoViwer from './CardPhotoViwer'
 import ComicInfo from './ComicInfo'
 import useStyles from './styles'
 import { HorizontalCardProps } from './types'
 
-export default function HorizontalCard({ comic, id }: HorizontalCardProps) {
+export default function HorizontalCard({
+  comic,
+  comicName,
+  comicDescription,
+  comicThumbnailPath,
+  comicThumbnailExtension,
+  comicDate,
+  characterComicsPageCount,
+  comicPrintPrice
+}: HorizontalCardProps) {
   const [cardImageFocused, setCardImageFocused] = useState(false)
 
   const toggleCardImageFocused = () => {
     setCardImageFocused(prev => !prev)
   }
+
+  const { selectedCharacter } = useSeletedUser()
 
   const { breakpoints } = useTheme()
   const query = useMediaQuery(`(max-width:${breakpoints.values.sm}px)`)
@@ -31,13 +42,17 @@ export default function HorizontalCard({ comic, id }: HorizontalCardProps) {
     conditionalComicHorizontalCardMedia,
     conditionalCardImageFocusedHorizontalCardMedia,
     conditionalComicHorizontalCardInfo,
+    horizontalCardDescription
   } = useStyles()
+
+  const currentImage = comic
+    ? `${comicThumbnailPath}.${comicThumbnailExtension}`
+    : `${selectedCharacter.thumbnail.path}.${selectedCharacter.thumbnail.extension}`
 
   return (
     <CardContainer className={horizontalCardContainer}>
       <CardMedia
-        image={wallpaper}
-        id={id}
+        image={currentImage}
         className={
           `${horizontalCardMedia}
            ${comic && conditionalComicHorizontalCardMedia}
@@ -51,25 +66,34 @@ export default function HorizontalCard({ comic, id }: HorizontalCardProps) {
          ${comic && conditionalComicHorizontalCardInfo}`
       }>
         <Typography variant="h2">
-          {`${comic ? 'comic' : 'character'} name`}
+          {comic ? comicName : selectedCharacter.name}
         </Typography>
 
-        {comic && <ComicInfo />}
+        {
+          comic && (
+            <ComicInfo
+              comicDate={comicDate}
+              characterComicsPageCount={characterComicsPageCount}
+              comicPrintPrice={comicPrintPrice}
+            />
+          )
+        }
 
-        <Typography variant="body2">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit repudiandae dolorum iure ea necessitatibus repellat consequuntur libero vitae architecto fugit totam sint recusandae laboriosam cumque ut, repellendus ullam vel ab!
+        <Typography
+          title={comicDescription || 'Description not provided'}
+          variant="body2"
+          className={horizontalCardDescription}
+        >
+          {(comic ? comicDescription : selectedCharacter.description) || 'Description not provided'}
         </Typography>
+
       </CardContent>
-
-      {
-        query && (
-          <CardPhotoViwer
-            comic={comic}
-            cardImageFocused={cardImageFocused}
-            toggleCardImageFocused={toggleCardImageFocused}
-          />
-        )
-      }
+      <CardPhotoViwer
+        comic={comic || false}
+        cardImageFocused={cardImageFocused}
+        toggleCardImageFocused={toggleCardImageFocused}
+        query={query}
+      />
     </CardContainer>
   )
 }
