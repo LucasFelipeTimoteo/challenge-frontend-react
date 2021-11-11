@@ -1,4 +1,8 @@
+import { ICharacter } from "../../types/ICharacters/types";
+
 export type CharacterListProps = {
-  favorited?: boolean,
-  teamPage?: boolean
+  teamPage?: boolean,
+  currentCharactersList: ICharacter[],
+  searchResultsNotFound?: boolean,
+  loadingSearchCharacters?: boolean,
 }
