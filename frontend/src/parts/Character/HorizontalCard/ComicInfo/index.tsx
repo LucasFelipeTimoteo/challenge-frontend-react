@@ -3,7 +3,17 @@ import { Typography } from '@material-ui/core'
 import { DateRange, MenuBook, Payment } from '@material-ui/icons'
 import useStyles from './styles'
 
-export default function ComicInfo() {
+interface IComicInfoProps {
+  comicDate?: string,
+  characterComicsPageCount?: number,
+  comicPrintPrice?: number
+}
+
+export default function ComicInfo({
+  comicDate,
+  characterComicsPageCount,
+  comicPrintPrice
+}: IComicInfoProps) {
   const {
     comicDateIcon,
     comicDateInfo,
@@ -17,19 +27,28 @@ export default function ComicInfo() {
   return (
     <div>
       <div className={comicInfo}>
-        <div className={comicDateInfo}>
+        <div
+          className={comicDateInfo}
+          title={`Release date: ${comicDate || 'Unavailable'}`}
+        >
           <DateRange className={comicDateIcon} />
-          <Typography>99/99/9999</Typography>
+          <Typography>{comicDate || 'Unavailable date'}</Typography>
         </div>
 
-        <div className={comicPagesInfo}>
+        <div
+          className={comicPagesInfo}
+          title={`number of pages: ${characterComicsPageCount || 'Unavailable'}`}
+        >
           <MenuBook className={comicPagesIcon} />
-          <Typography>99 pages</Typography>
+          <Typography>{characterComicsPageCount || 'Unavailable'} pages</Typography>
         </div>
 
-        <div className={comicPriceInfo}>
+        <div
+          className={comicPriceInfo}
+          title={`comic price (print comic): U$ ${comicPrintPrice || 'Unavailable'}`}
+        >
           <Payment className={comicPriceIcon} />
-          <Typography>U$ 0.99</Typography>
+          <Typography>U$ {comicPrintPrice || 'Unavailable'}</Typography>
         </div>
       </div>
     </div>
