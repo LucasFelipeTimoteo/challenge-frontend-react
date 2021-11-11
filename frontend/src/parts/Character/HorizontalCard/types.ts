@@ -1,4 +1,10 @@
 export type HorizontalCardProps = {
   comic?: boolean,
-  id?: string
+  comicThumbnailPath?: string,
+  comicThumbnailExtension?: string,
+  comicName?: string,
+  comicDescription?: string,
+  comicDate?: string,
+  characterComicsPageCount?: number
+  comicPrintPrice?: number
 }
