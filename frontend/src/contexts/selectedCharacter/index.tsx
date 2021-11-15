@@ -65,6 +65,7 @@ export function SelectedCharacterProvider({ children }: ISelectedCharacterProps)
         setLoadingSelectedCharacter(false)
       }
       catch (error) {
+        window.location.pathname = '/'
         console.log(error)
       }
     }
