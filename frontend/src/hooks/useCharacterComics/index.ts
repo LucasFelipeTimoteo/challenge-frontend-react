@@ -1,6 +1,7 @@
 import md5 from "md5";
-import { useEffect, useMemo, useState } from "react";
-import marvelApiInstance from "../../services/api";
+import { useEffect, useState } from "react";
+import getURLPathId from "../../utils/getURLPathId";
+import marvelComicsApi from "../../services/api/marvelComicsApi";
 import getEnvVariables from "../utils/getEnvVariables";
 import { ICharacterComics } from "./types";
 
@@ -8,6 +9,8 @@ export default function useCharacterComics(characterId: number) {
   const [characterComics, setCharacterComics] = useState<ICharacterComics[]>([])
   const [characterComicsCount, setCharacterComicsCount] = useState(0)
   const [loadingCharacterComics, setLoadingCharacterComics] = useState(false)
+
+  const pathId = getURLPathId()
 
   useEffect(() => {
     const getCharacterComic = async () => {
@@ -22,12 +25,12 @@ export default function useCharacterComics(characterId: number) {
       }
 
       try {
-        const api = marvelApiInstance({
+        const api = marvelComicsApi({
           limit,
           publicKey,
           hash,
           timestamp,
-          characterId: String(characterId) 
+          characterId: String(pathId) || String(characterId)
         })
         const apiRequest = await api('comics')
 
@@ -44,10 +47,10 @@ export default function useCharacterComics(characterId: number) {
       }
     }
 
-    if (characterId) {
+    if (characterId || pathId) {
       getCharacterComic()
     }
-  }, [characterId])
+  }, [characterId, pathId])
 
   return {
     characterComics,
