@@ -1,6 +1,6 @@
 import md5 from "md5"
 import { useEffect, useState } from "react"
-import marvelApiInstance from "../../services/api"
+import marvelApiInstance from "../../services/api/marvelCharactersApi"
 import getEnvVariables from "../utils/getEnvVariables"
 
 type useSearchCharactersListProps = {
