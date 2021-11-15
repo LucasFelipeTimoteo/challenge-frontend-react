@@ -7,7 +7,6 @@ import {
   useTheme
 } from '@material-ui/core'
 import React from 'react'
-import { useHistory } from 'react-router'
 import { useSeletedUser } from '../../../contexts/selectedCharacter'
 import useCardImageFocused from '../../../hooks/useCardImageFocused'
 import CardPhotoViwer from './CardPhotoViwer'
@@ -26,8 +25,7 @@ export default function HorizontalCard({
   comicPrintPrice
 }: HorizontalCardProps) {
   const { cardImageFocused, toggleCardImageFocused } = useCardImageFocused()
-  const { push } = useHistory()
-  const { selectedCharacter } = useSeletedUser()
+  const { selectedCharacter, loadingSelectedCharacter } = useSeletedUser()
   const { breakpoints } = useTheme()
   const query = useMediaQuery(`(max-width:${breakpoints.values.sm}px)`)
 
@@ -41,22 +39,24 @@ export default function HorizontalCard({
     horizontalCardDescription
   } = useStyles()
 
-  if (!('id' in selectedCharacter)) {
-    push('/')
+  if (loadingSelectedCharacter && !('id' in selectedCharacter)) {
     return null
   }
-  const headerCharacterPath = selectedCharacter
-    ? `${selectedCharacter.thumbnail.path}.${selectedCharacter.thumbnail.extension}`
-    : ''
 
-  const currentImage = comic
-    ? `${comicThumbnailPath}.${comicThumbnailExtension}`
-    : headerCharacterPath
+  const headerCharacterPath =
+    'id' in selectedCharacter &&
+    `${selectedCharacter.thumbnail.path}.${selectedCharacter.thumbnail.extension}`
+
+
+  const currentImage =
+    comic
+      ? `${comicThumbnailPath}.${comicThumbnailExtension}`
+      : headerCharacterPath
 
   return (
     <CardContainer className={horizontalCardContainer}>
       <CardMedia
-        image={currentImage}
+        image={currentImage || ''}
         className={
           `${horizontalCardMedia}
            ${comic && conditionalComicHorizontalCardMedia}
