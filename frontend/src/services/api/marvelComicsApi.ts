@@ -4,7 +4,7 @@ interface IMarvelComicsApiProps {
   limit: string
   timestamp: string
   publicKey: string
-  hash: () => string,
+  hash: string,
   handleOffset?: () => string
   nameStartsWith?: string
   characterId?: string
@@ -26,7 +26,7 @@ export default function marvelComicsApi({
       limit,
       ts: timestamp,
       apikey: publicKey,
-      hash: hash(),
+      hash,
       ...(handleOffset && { offset: handleOffset() }),
       ...(nameStartsWith && { nameStartsWith }),
       ...(characterId && { characters: characterId })
