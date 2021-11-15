@@ -22,6 +22,7 @@ export default function useCharacters(inView: boolean, loadMoreData: boolean, se
 
       const timestamp = String(Date.now())
       const { privateKey, publicKey, limit } = getEnvVariables()
+      const hash = md5(timestamp + privateKey + publicKey)
 
       const handleOffset = () => {
         const totalPageCharacters = characters.length
@@ -29,10 +30,6 @@ export default function useCharacters(inView: boolean, loadMoreData: boolean, se
         return newOffset
       }
 
-      const hash = () => {
-        const hashMd5 = md5(timestamp + privateKey + publicKey)
-        return hashMd5
-      }
       try {
         const api = marvelCharactersApi({
           limit,

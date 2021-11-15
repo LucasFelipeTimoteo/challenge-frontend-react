@@ -39,11 +39,7 @@ export function SelectedCharacterProvider({ children }: ISelectedCharacterProps)
 
       const timestamp = String(Date.now())
       const { privateKey, publicKey, limit } = getEnvVariables()
-
-      const hash = () => {
-        const hashMd5 = md5(timestamp + privateKey + publicKey)
-        return hashMd5
-      }
+      const hash = md5(timestamp + privateKey + publicKey)
 
       try {
         const api = marvelCharactersApi({
