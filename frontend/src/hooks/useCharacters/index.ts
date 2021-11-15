@@ -1,8 +1,8 @@
 import md5 from "md5"
 import { useEffect, useState } from "react"
-import marvelApiInstance from "../../services/api"
-import getStorageCharactersOrUseDefault from './utils/getStorageCharactersOrUseDefault'
+import marvelCharactersApi from "../../services/api/marvelCharactersApi"
 import getEnvVariables from "../utils/getEnvVariables"
+import getStorageCharactersOrUseDefault from './utils/getStorageCharactersOrUseDefault'
 import getStorageResultsNumberOrUseDefault from "./utils/getStorageResultsNumberOrUseDefault"
 
 export default function useCharacters(inView: boolean, loadMoreData: boolean, searchKey: string) {
@@ -34,7 +34,7 @@ export default function useCharacters(inView: boolean, loadMoreData: boolean, se
         return hashMd5
       }
       try {
-        const api = marvelApiInstance({
+        const api = marvelCharactersApi({
           limit,
           publicKey,
           handleOffset,
