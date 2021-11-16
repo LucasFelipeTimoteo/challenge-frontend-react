@@ -3,9 +3,9 @@ import React, { createContext, ReactNode, useContext, useEffect, useState } from
 import { ICharacter } from '../../hooks/useCharacters/types';
 import getEnvVariables from '../../hooks/utils/getEnvVariables';
 import marvelCharactersApi from '../../services/api/marvelCharactersApi';
-import getStorageSelectedCharacterOrUseDefault from './utils/getStorageSelectedCharacterOrUseDefault';
 import getURLPathId from '../../utils/getURLPathId';
-
+import getStorageSelectedCharacterOrUseDefault from './utils/getStorageSelectedCharacterOrUseDefault';
+import singleCharacterTypeGuard from './utils/typeGuards/singleCharacterTypeGuard';
 
 interface IContextValue {
   selectedCharacter: ICharacter,
@@ -47,12 +47,16 @@ export function SelectedCharacterProvider({ children }: ISelectedCharacterProps)
           publicKey,
           hash,
           timestamp,
-          characterId: pathId
         })
         const apiRequest = await api(`characters/${pathId}`)
 
         const response = apiRequest.data
         const character = response.data.results[0]
+
+        if(!singleCharacterTypeGuard(character)) {
+          throw new Error('API response does not have correct type')
+        }
+
         setSelectedCharacter(character)
         window.localStorage.setItem(
           'MARVEL_STRIKE_TEAM_SELECTED_CHARACTER',
