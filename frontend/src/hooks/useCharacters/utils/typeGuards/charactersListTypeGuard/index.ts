@@ -1,4 +1,4 @@
-import { ICharacter } from "../../../useCharacters/types"
+import { ICharacter } from "../../../types"
 
 const charactersListTypeGuard = (storageList: any): storageList is ICharacter[] => {
   if(!Array.isArray(storageList)) {
