@@ -7,7 +7,6 @@ interface ImarvelCharactersApiProps {
   hash: string,
   handleOffset?: () => string
   nameStartsWith?: string
-  characterId?: number
 }
 
 export default function marvelCharactersApi({
@@ -17,10 +16,7 @@ export default function marvelCharactersApi({
   publicKey,
   hash,
   nameStartsWith,
-  characterId
 }: ImarvelCharactersApiProps) {
-
-  console.log(characterId)
   const api = axios.create({
     method: 'GET',
     baseURL: 'http://gateway.marvel.com/v1/public/',
