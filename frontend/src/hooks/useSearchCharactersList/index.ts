@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import marvelApiInstance from "../../services/api/marvelCharactersApi"
 import { ICharacter } from "../useCharacters/types"
 import getEnvVariables from "../utils/getEnvVariables"
+import charactersListTypeGuard from "../utils/typeGuards/charactersListTypeGuard"
 
 type useSearchCharactersListProps = {
   searchKey?: string
@@ -39,6 +40,10 @@ export default function useSearchCharactersList({ searchKey }: useSearchCharacte
         const response = apiRequest.data
         const resultsNumber = response.data.total
         const searchedCharactersList = response.data.results
+
+        if(!charactersListTypeGuard(searchedCharactersList)) {
+          throw new Error('API response does not have correct type')
+        }
 
         setTotalSearchResults(resultsNumber)
         setSearchCharactersList(searchedCharactersList)
