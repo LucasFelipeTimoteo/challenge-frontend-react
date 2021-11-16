@@ -2,10 +2,15 @@ import md5 from "md5"
 import { useEffect, useState } from "react"
 import marvelCharactersApi from "../../services/api/marvelCharactersApi"
 import getEnvVariables from "../utils/getEnvVariables"
+import charactersListTypeGuard from "../utils/typeGuards/charactersListTypeGuard"
 import getStorageCharactersOrUseDefault from './utils/getStorageCharactersOrUseDefault'
 import getStorageResultsNumberOrUseDefault from "./utils/getStorageResultsNumberOrUseDefault"
 
-export default function useCharacters(inView: boolean, loadMoreData: boolean, searchKey: string) {
+export default function useCharacters(
+  inView: boolean,
+  loadMoreData: boolean,
+  searchKey: string
+) {
   const defaultCharactersValue = getStorageCharactersOrUseDefault()
   const defaultCharactersCountValue = getStorageResultsNumberOrUseDefault()
 
@@ -43,6 +48,10 @@ export default function useCharacters(inView: boolean, loadMoreData: boolean, se
         const response = apiRequest.data
         const resultsNumber = response.data.total
         const characterList = response.data.results
+
+        if (!charactersListTypeGuard(characterList)) {
+          throw new Error('API response does not have correct type')
+        }
 
         setCharacters(prev => [...prev, ...characterList])
         setcharactersCount(resultsNumber)
