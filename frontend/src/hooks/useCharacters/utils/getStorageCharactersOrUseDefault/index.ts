@@ -1,4 +1,4 @@
-import charactersListTypeGuard from "../../../utils/typeGuards/charactersListTypeGuard"
+import charactersListTypeGuard from "../typeGuards/charactersListTypeGuard"
 import { ICharacter } from "../../types"
 
 let defaultCharacterValue: ICharacter[] = []
