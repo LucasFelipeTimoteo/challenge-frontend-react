@@ -19,7 +19,7 @@ export default function useCharacters(
   const [loadingCharacters, setLoadingCharacters] = useState(false)
 
   const firstRenderFetchCondition = (characters.length === 0 && !loadingCharacters)
-  const normalFetCondition = (inView && !loadingCharacters && loadMoreData && !searchKey)
+  const normalFetchCondition = (inView && !loadingCharacters && loadMoreData && !searchKey)
 
   useEffect(() => {
     const getCharacters = async () => {
@@ -73,7 +73,7 @@ export default function useCharacters(
       }
     }
 
-    if (normalFetCondition || firstRenderFetchCondition) {
+    if (normalFetchCondition || firstRenderFetchCondition) {
       getCharacters()
     }
 
@@ -83,7 +83,7 @@ export default function useCharacters(
     inView,
     loadMoreData,
     searchKey,
-    normalFetCondition,
+    normalFetchCondition,
     firstRenderFetchCondition
   ])
 
