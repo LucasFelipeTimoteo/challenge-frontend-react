@@ -4,6 +4,7 @@ import getURLPathId from "../../utils/getURLPathId";
 import marvelComicsApi from "../../services/api/marvelComicsApi";
 import getEnvVariables from "../utils/getEnvVariables";
 import { ICharacterComics } from "./types";
+import characterComicsTypeGuard from "./utils/characterComicsTypeGuard";
 
 export default function useCharacterComics(characterId: number) {
   const [characterComics, setCharacterComics] = useState<ICharacterComics[]>([])
@@ -33,6 +34,10 @@ export default function useCharacterComics(characterId: number) {
         const response = apiRequest.data
         const characterComicsCount = response.data.count
         const characterComicsList = response.data.results
+
+        if(!characterComicsTypeGuard(characterComicsList)) {
+          throw new Error('API response does not have correct type')
+        }
 
         setCharacterComics(prev => [...prev, ...characterComicsList])
         setCharacterComicsCount(characterComicsCount)
