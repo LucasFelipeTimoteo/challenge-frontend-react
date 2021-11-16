@@ -1,6 +1,7 @@
 import md5 from "md5"
 import { useEffect, useState } from "react"
 import marvelApiInstance from "../../services/api/marvelCharactersApi"
+import { ICharacter } from "../useCharacters/types"
 import getEnvVariables from "../utils/getEnvVariables"
 
 type useSearchCharactersListProps = {
@@ -8,7 +9,7 @@ type useSearchCharactersListProps = {
 }
 
 export default function useSearchCharactersList({ searchKey }: useSearchCharactersListProps) {
-  const [searchCharactersList, setSearchCharactersList] = useState([])
+  const [searchCharactersList, setSearchCharactersList] = useState<ICharacter[]>([])
   const [totalSearchResults, setTotalSearchResults] = useState(0)
   const [loadingSearchCharacters, setSoadingSearchCharacters] = useState(false)
 
