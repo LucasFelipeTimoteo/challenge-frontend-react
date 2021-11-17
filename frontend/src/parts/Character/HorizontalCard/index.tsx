@@ -56,7 +56,7 @@ export default function HorizontalCard({
   return (
     <CardContainer className={horizontalCardContainer}>
       <CardMedia
-        image={currentImage || ''}
+        image={currentImage || '/'}
         className={
           `${horizontalCardMedia}
            ${comic && conditionalComicHorizontalCardMedia}
