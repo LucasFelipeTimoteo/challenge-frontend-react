@@ -1,6 +1,7 @@
 const defaultTotalResultsValue = 0
-const getStorageResultsNumberOrUseDefault = () => {
-  const storageResultsValue = window.localStorage.getItem('MARVEL_STRIKE_TEAM_FETCHED_RESULTS_NUMBER')
+
+const getStorageCharactersResultsCountOrUseDefault = () => {
+  const storageResultsValue = window.localStorage.getItem('MARVEL_STRIKE_TEAM_FETCHED_CHARACTERS_RESULTS_COUNT')
   if (typeof Number(storageResultsValue) === 'number') {
     const parsedStorageResultsValue = Number(storageResultsValue)
     return parsedStorageResultsValue
@@ -9,4 +10,4 @@ const getStorageResultsNumberOrUseDefault = () => {
   return defaultTotalResultsValue
 }
 
-export default getStorageResultsNumberOrUseDefault
+export default getStorageCharactersResultsCountOrUseDefault
