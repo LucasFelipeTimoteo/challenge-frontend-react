@@ -8,7 +8,8 @@ const useStyles = makeStyles({
     alignItems: 'center',
     fontWeight: 800,
     textShadow: '1px 1px 2px gray',
-    marginTop: 20
+    marginTop: 20,
+    height: '35vh'
   }
 })
 
