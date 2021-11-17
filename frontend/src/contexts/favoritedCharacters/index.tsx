@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
 import { ICharacter } from '../../hooks/useCharacters/types'
+import setLocalStorageData from '../../utils/setListToLocalStorage'
 import getStorageFavoriteCharactersOrUseDefault from './utils/getStorageCharactersOrUseDefault'
 
 interface IFavoriteCharactersContextValues {
@@ -17,7 +18,9 @@ const FavoriteCharactersContext = createContext({} as IFavoriteCharactersContext
 export function FavoriteCharactersProvider({ children }: IFavoriteCharactersProviderProps) {
   const defaultFavoriteCharacters = getStorageFavoriteCharactersOrUseDefault()
 
-  const [favoriteCharacters, setFavoriteCharacters] = useState<ICharacter[]>(defaultFavoriteCharacters)
+  const [favoriteCharacters, setFavoriteCharacters] = useState<ICharacter[]>(
+    defaultFavoriteCharacters
+  )
 
   const addFavoriteCharacter = (character: ICharacter) => {
     const notADuplicatedCharacter = favoriteCharacters.every(favoriteCharacter => (
@@ -26,10 +29,11 @@ export function FavoriteCharactersProvider({ children }: IFavoriteCharactersProv
 
     if (notADuplicatedCharacter) {
       setFavoriteCharacters([...favoriteCharacters, character])
-      window.localStorage.setItem(
-        'MARVEL_STRIKE_TEAM_FETCHED_CHARACTERS_FAVORITES',
-        JSON.stringify([...favoriteCharacters, character])
+      setLocalStorageData(
+        'favoriteCharacters',
+        { list: favoriteCharacters, item: character }
       )
+
     }
   }
 
@@ -39,11 +43,10 @@ export function FavoriteCharactersProvider({ children }: IFavoriteCharactersProv
     ))
 
     setFavoriteCharacters(newFavoriteCharactersList)
-    window.localStorage.setItem(
-      'MARVEL_STRIKE_TEAM_FETCHED_CHARACTERS_FAVORITES',
-      JSON.stringify(newFavoriteCharactersList)
+    setLocalStorageData(
+      'favoriteCharacters',
+      { list: newFavoriteCharactersList }
     )
-
   }
 
   const providerValues = {

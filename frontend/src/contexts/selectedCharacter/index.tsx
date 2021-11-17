@@ -4,6 +4,7 @@ import { ICharacter } from '../../hooks/useCharacters/types';
 import getEnvVariables from '../../hooks/utils/getEnvVariables';
 import marvelCharactersApi from '../../services/api/marvelCharactersApi';
 import getURLPathId from '../../utils/getURLPathId';
+import setLocalStorageData from '../../utils/setListToLocalStorage';
 import getStorageSelectedCharacterOrUseDefault from './utils/getStorageSelectedCharacterOrUseDefault';
 import singleCharacterTypeGuard from './utils/typeGuards/singleCharacterTypeGuard';
 
@@ -53,15 +54,13 @@ export function SelectedCharacterProvider({ children }: ISelectedCharacterProps)
         const response = apiRequest.data
         const character = response.data.results[0]
 
-        if(!singleCharacterTypeGuard(character)) {
+        if (!singleCharacterTypeGuard(character)) {
           throw new Error('API response does not have correct type')
         }
 
         setSelectedCharacter(character)
-        window.localStorage.setItem(
-          'MARVEL_STRIKE_TEAM_SELECTED_CHARACTER',
-          JSON.stringify(character)
-        )
+        setLocalStorageData('selectedCharacter', { item: character })
+
         setLoadingSelectedCharacter(false)
       }
       catch (error) {
@@ -78,10 +77,7 @@ export function SelectedCharacterProvider({ children }: ISelectedCharacterProps)
 
   const handleSelectedCharacter = (selectedUser: ICharacter) => {
     setSelectedCharacter(selectedUser)
-    window.localStorage.setItem(
-      'MARVEL_STRIKE_TEAM_SELECTED_CHARACTER',
-      JSON.stringify(selectedUser)
-    )
+    setLocalStorageData('selectedCharacter', { item: selectedUser })
   }
 
   const contextValue = { selectedCharacter, handleSelectedCharacter, loadingSelectedCharacter }
