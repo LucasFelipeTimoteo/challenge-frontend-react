@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import { cardScrollbarStyleObjectVar, cardStyleVars } from "../../../themes/globalStyleVariables";
+import { cardScrollbarStyleObjectVar, cardStyleVars } from "../../../styles/globalStyleVariables";
 import { StylesObjectJSS } from "./types";
 
 const cardFavoriteOrDisfavorButtonSharedStyles: StylesObjectJSS = {

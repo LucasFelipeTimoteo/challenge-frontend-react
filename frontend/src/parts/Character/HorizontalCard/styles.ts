@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-import { cardScrollbarStyleObjectVar } from '../../../themes/globalStyleVariables'
+import { cardScrollbarStyleObjectVar } from '../../../styles/globalStyleVariables'
 
 const useStyles = makeStyles(({ breakpoints }) => ({
   horizontalCardContainer: {

@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import { cardStyleVars } from "../../../themes/globalStyleVariables";
+import { cardStyleVars } from "../../../styles/globalStyleVariables";
 
 const useStyles = makeStyles({
   charactersCardsSection: {

@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import wallpaper from '../../assets/images/wallpaper.avif'
-import { symmetricSideMarginStyleVar } from "../../themes/globalStyleVariables";
+import { symmetricSideMarginStyleVar } from "../../styles/globalStyleVariables";
 
 export const useStyles = makeStyles({
   HeroContainer: {
