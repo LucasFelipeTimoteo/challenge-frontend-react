@@ -7,7 +7,6 @@ import ResultsNotFound from '../../parts/GLOBAL/ResultsNotFound'
 
 export default function Team() {
   const { favoriteCharacters } = useFavoriteCharacterProvider()
-  console.log(favoriteCharacters)
 
   return (
     <>
