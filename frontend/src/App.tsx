@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { SelectedCharacterProvider } from './contexts/selectedCharacter';
-import { MUIThemeProvider } from './themes/MUITheme';
+import { MUIThemeProvider } from './styles/themes/MUITheme';
 import Routes from './Routes';
 import { FavoriteCharactersProvider } from './contexts/favoritedCharacters';
 
