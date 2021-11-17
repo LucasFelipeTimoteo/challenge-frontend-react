@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './styles/App.css';
 import { SelectedCharacterProvider } from './contexts/selectedCharacter';
 import { MUIThemeProvider } from './styles/themes/MUITheme';
 import Routes from './Routes';
