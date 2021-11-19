@@ -16,7 +16,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     padding: `0 ${symmetricSideMarginStyleVar}`,
     height: '100%',
 
-    [breakpoints.down(breakpoints.values.md)]: {
+    [breakpoints.down(breakpoints.values.sm)]: {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
@@ -40,11 +40,23 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 10,
+    gap: 20,
+  },
 
-    [breakpoints.down(breakpoints.values.md)]: {
+  hamburguerMenuIcon: {
+    marginLeft: 'auto',
+    color: 'whitesmoke',
+
+    [breakpoints.down(breakpoints.values.sm)]: {
       marginLeft: 0
     }
+  },
+
+  menuItemContainer: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    gap: 5
   }
 }))
 
