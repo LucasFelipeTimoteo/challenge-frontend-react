@@ -2,20 +2,14 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 import { ArrowBack, CameraAlt } from '@material-ui/icons'
 import useStyles from './styles'
-
-type CardPhotoViwerProps = {
-  comic: boolean,
-  cardImageFocused?: boolean,
-  toggleCardImageFocused?: () => void,
-  query: boolean
-}
+import { ICardPhotoViwerProps } from './types'
 
 export default function CardPhotoViwer({
   comic,
   cardImageFocused,
   toggleCardImageFocused,
   query
-}: CardPhotoViwerProps) {
+}: ICardPhotoViwerProps) {
   const { photoViwer } = useStyles()
 
   if(!query) {
