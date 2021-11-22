@@ -1,6 +1,5 @@
 import { useState } from "react"
-
-type handleSearchEventType = React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+import { handleSearchEventType } from "./types"
 
 export default function useSearch() {
   const [searchValue, setSearchValue] = useState('')

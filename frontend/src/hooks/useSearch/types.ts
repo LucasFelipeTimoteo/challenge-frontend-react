@@ -1,0 +1,1 @@
+export type handleSearchEventType = React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
