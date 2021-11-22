@@ -3,12 +3,9 @@ import { useEffect, useState } from "react"
 import marvelApiInstance from "../../services/api/marvelCharactersApi"
 import { ICharacter } from "../useCharacters/types"
 import getEnvVariables from "../utils/getEnvVariables"
+import { IUseSearchCharactersListProps } from "./types"
 
-type useSearchCharactersListProps = {
-  searchKey?: string
-}
-
-export default function useSearchCharactersList({ searchKey }: useSearchCharactersListProps) {
+export default function useSearchCharactersList({ searchKey }: IUseSearchCharactersListProps) {
   const [searchCharactersList, setSearchCharactersList] = useState<ICharacter[]>([])
   const [totalSearchResults, setTotalSearchResults] = useState(0)
   const [loadingSearchCharacters, setSoadingSearchCharacters] = useState(false)
