@@ -2,12 +2,7 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 import { DateRange, MenuBook, Payment } from '@material-ui/icons'
 import useStyles from './styles'
-
-interface IComicInfoProps {
-  comicDate?: string,
-  characterComicsPageCount?: number,
-  comicPrintPrice?: number
-}
+import { IComicInfoProps } from './types'
 
 export default function ComicInfo({
   comicDate,
