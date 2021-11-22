@@ -1,22 +1,13 @@
 import md5 from 'md5';
-import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { ICharacter } from '../../hooks/useCharacters/types';
 import getEnvVariables from '../../hooks/utils/getEnvVariables';
 import marvelCharactersApi from '../../services/api/marvelCharactersApi';
 import getURLPathId from '../../utils/getURLPathId';
 import setLocalStorageData from '../../utils/setListToLocalStorage';
+import { IContextValue, ISelectedCharacterProps } from './types';
 import getStorageSelectedCharacterOrUseDefault from './utils/getStorageSelectedCharacterOrUseDefault';
 import singleCharacterTypeGuard from './utils/typeGuards/singleCharacterTypeGuard';
-
-interface IContextValue {
-  selectedCharacter: ICharacter,
-  handleSelectedCharacter: (selectedUser: ICharacter) => void
-  loadingSelectedCharacter: boolean
-}
-
-interface ISelectedCharacterProps {
-  children: ReactNode
-}
 
 const selectedCharacterContext = createContext({} as IContextValue)
 
@@ -32,7 +23,6 @@ export function SelectedCharacterProvider({ children }: ISelectedCharacterProps)
 
   const [selectedCharacter, setSelectedCharacter] = useState(selectedCharacterDefaultValue)
   const [loadingSelectedCharacter, setLoadingSelectedCharacter] = useState(false)
-
 
   useEffect(() => {
     const getSelectedCharacter = async (pathId: number) => {
