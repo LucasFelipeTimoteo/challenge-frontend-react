@@ -1,8 +1,4 @@
-interface IThrowEnvErrorsprops {
-  envPrivateKey: string | undefined,
-  envPublicKey: string | undefined,
-  envLimit: string | undefined
-}
+import { IThrowEnvErrorsprops } from "./types";
 
 const validateEnvVariables = ({ envPrivateKey, envPublicKey, envLimit }: IThrowEnvErrorsprops) => {
   if (!envPrivateKey) {
