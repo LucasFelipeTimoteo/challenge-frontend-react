@@ -2,14 +2,7 @@ import { IconButton, TextField } from '@material-ui/core'
 import { Search } from '@material-ui/icons'
 import React from 'react'
 import useStyles from './styles'
-
-interface ISearchbarProps {
-  searchValue: string,
-  handleSearchValue: (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => void
-  handleSearchKey: () => void
-}
+import { ISearchbarProps } from './types'
 
 export default function Searchbar({
   searchValue,
