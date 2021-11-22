@@ -5,11 +5,11 @@ import { useMUITheme } from '../../../styles/themes/MUITheme'
 import useStyles from './styles'
 
 export default function ToggleThemeButton() {
-  const { pageTheme } = useMUITheme()
+  const { pageTheme, togglePageTheme } = useMUITheme()
   const { toggleThemeButton, toggleThemeButtonWrapper } = useStyles()
 
   return (
-    <IconButton className={toggleThemeButtonWrapper}>
+    <IconButton className={toggleThemeButtonWrapper} onClick={togglePageTheme}>
       {
         pageTheme === "light"
           ?
