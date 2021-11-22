@@ -1,13 +1,5 @@
 import axios from "axios";
-
-interface ImarvelCharactersApiProps {
-  limit: string
-  timestamp: string
-  publicKey: string
-  hash: string,
-  handleOffset?: () => string
-  nameStartsWith?: string
-}
+import { ImarvelCharactersApiProps } from "./types";
 
 export default function marvelCharactersApi({
   limit,
