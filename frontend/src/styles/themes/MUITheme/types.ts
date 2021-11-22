@@ -6,5 +6,5 @@ export type MUIThemeProviderProps = {
 
 export type MUIThemeProviderValue = {
   pageTheme: string,
-  togglepageTheme: () => void
+  togglePageTheme: () => void
 }

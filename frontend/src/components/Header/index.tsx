@@ -17,7 +17,7 @@ import { HeaderProps } from './types'
 export default function Header({ teamPage }: HeaderProps) {
   const { anchorEl, handleClose, handleMenu, open } = useHeaderMenu()
   const { breakpoints } = useTheme()
-  const { togglepageTheme } = useMUITheme()
+  const { togglePageTheme } = useMUITheme()
   const query = useMediaQuery(`(min-width:${breakpoints.values.md}px)`)
 
   const {
@@ -75,7 +75,7 @@ export default function Header({ teamPage }: HeaderProps) {
             <MenuItem className={menuItemContainer}>
               {!teamPage && <JoinTeamButton />}
             </MenuItem>
-            <MenuItem className={menuItemContainer} onClick={togglepageTheme}>
+            <MenuItem className={menuItemContainer} onClick={togglePageTheme}>
               <ToggleThemeButton />
             </MenuItem>
             <MenuItem onClick={handleClose} className={menuItemContainer}>

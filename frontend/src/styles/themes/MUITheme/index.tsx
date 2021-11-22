@@ -30,7 +30,7 @@ export const MUIThemeProvider = ({ children }: MUIThemeProviderProps) => {
 
   const [pageTheme, setPageTheme] = useState<PaletteType>(pageDefaultTheme)
 
-  const togglepageTheme = () => {
+  const togglePageTheme = () => {
     const newPageTheme: PaletteType = pageTheme === "light" ? "dark" : "light"
     setPageTheme(newPageTheme)
 
@@ -85,7 +85,7 @@ export const MUIThemeProvider = ({ children }: MUIThemeProviderProps) => {
 
   const MUITheme = responsiveFontSizes(theme)
   const providerValues = {
-    togglepageTheme,
+    togglePageTheme,
     pageTheme
   }
 
@@ -100,7 +100,7 @@ export const MUIThemeProvider = ({ children }: MUIThemeProviderProps) => {
 }
 
 export const useMUITheme = () => {
-  const { togglepageTheme, pageTheme } = useContext(MUIThemeContext)
+  const { togglePageTheme, pageTheme } = useContext(MUIThemeContext)
 
-  return { togglepageTheme, pageTheme }
+  return { togglePageTheme, pageTheme }
 }
