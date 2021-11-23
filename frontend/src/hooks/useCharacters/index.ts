@@ -18,9 +18,16 @@ export default function useCharacters(
   const [characters, setCharacters] = useState(defaultCharactersValue)
   const [charactersCount, setcharactersCount] = useState(defaultCharactersCountValue)
   const [loadingCharacters, setLoadingCharacters] = useState(false)
+  const [resultsFound, setResultsFound] = useState(true)
 
-  const firstRenderFetchCondition = (characters.length === 0 && !loadingCharacters)
-  const normalFetchCondition = (inView && !loadingCharacters && loadMoreData && !searchKey)
+  const firstRenderFetchCondition = (
+    (characters.length === 0 && !loadingCharacters) &&
+    resultsFound
+  )
+  const normalFetchCondition = (
+    (inView && !loadingCharacters && loadMoreData && !searchKey) &&
+    resultsFound
+  )
 
   useEffect(() => {
     const getCharacters = async () => {
@@ -49,21 +56,26 @@ export default function useCharacters(
         const response = apiRequest.data
         const resultsNumber = response.data.total
         const characterList = response.data.results
-        
+
+
         if (!charactersListTypeGuard(characterList)) {
           throw new Error('API response does not have correct type')
         }
+        setResultsFound(true)
+
         const newCharacterList = [...characters, ...characterList]
-        
+
         setCharacters(prev => [...prev, ...characterList])
         setcharactersCount(resultsNumber)
-        setLocalStorageData('characters', {list: newCharacterList})
-        setLocalStorageData('charactersCount', {item: resultsNumber})
+        setLocalStorageData('characters', { list: newCharacterList })
+        setLocalStorageData('charactersCount', { item: resultsNumber })
 
         setLoadingCharacters(false)
       }
       catch (error) {
         console.log(error)
+        setLoadingCharacters(false)
+        setResultsFound(false)
       }
     }
 
@@ -84,6 +96,7 @@ export default function useCharacters(
   return {
     characters,
     charactersCount,
-    loadingCharacters
+    loadingCharacters,
+    resultsFound
   }
 }
