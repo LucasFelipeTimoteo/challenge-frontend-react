@@ -6,24 +6,28 @@ import {
   useMediaQuery,
   useTheme
 } from '@material-ui/core'
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { useSeletedUser } from '../../../contexts/selectedCharacter'
 import useCardImageFocused from '../../../hooks/useCardImageFocused'
 import CardPhotoViwer from './CardPhotoViwer'
 import ComicInfo from './ComicInfo'
 import useStyles from './styles'
-import { HorizontalCardProps } from './types'
+import { IHorizontalCardProps } from './types'
 
-export default function HorizontalCard({
-  comic,
-  comicName,
-  comicDescription,
-  comicThumbnailPath,
-  comicThumbnailExtension,
-  comicDate,
-  characterComicsPageCount,
-  comicPrintPrice
-}: HorizontalCardProps) {
+const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
+  {
+    comic,
+    comicName,
+    comicDescription,
+    comicThumbnailPath,
+    comicThumbnailExtension,
+    comicDate,
+    characterComicsPageCount,
+    comicPrintPrice,
+    lastVisibleHorizontalCard
+  },
+  ref
+) => {
   const { cardImageFocused, toggleCardImageFocused } = useCardImageFocused()
   const { selectedCharacter, loadingSelectedCharacter } = useSeletedUser()
   const { breakpoints } = useTheme()
@@ -54,7 +58,7 @@ export default function HorizontalCard({
       : headerCharacterPath
 
   return (
-    <CardContainer className={horizontalCardContainer}>
+    <CardContainer className={horizontalCardContainer} ref={lastVisibleHorizontalCard ? ref : null}>
       <CardMedia
         image={currentImage || '/'}
         className={
@@ -100,4 +104,6 @@ export default function HorizontalCard({
       />
     </CardContainer>
   )
-}
+})
+
+export default HorizontalCard
