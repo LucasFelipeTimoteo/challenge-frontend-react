@@ -9,9 +9,16 @@ export default function useCharacterComics(characterId: number, inView: boolean)
   const [characterComics, setCharacterComics] = useState<ICharacterComics[]>([])
   const [characterComicsResultsNumber, setCharacterComicsResultsNumber] = useState(0)
   const [loadingCharacterComics, setLoadingCharacterComics] = useState(false)
+  const [resultsFound, setResultsFound] = useState(true)
 
-  const firstRenderFetchCondition = (characterId && characterComics.length === 0 && !loadingCharacterComics)
-  const normalFetchCondition = (characterId && inView && !loadingCharacterComics)
+  const firstRenderFetchCondition = (
+    (characterId && characterComics.length === 0 && !loadingCharacterComics) &&
+    resultsFound
+  )
+  const normalFetchCondition = (
+    (characterId && inView && !loadingCharacterComics) &&
+    resultsFound
+  )
 
   useEffect(() => {
     const getCharacterComic = async () => {
@@ -47,6 +54,8 @@ export default function useCharacterComics(characterId: number, inView: boolean)
           throw new Error('API response does not have correct type')
         }
 
+        setResultsFound(true)
+
         const characterComicsListWithoutDuplicates = characterComicsList.filter(responseComic => (
           characterComics.every(comic => responseComic.id !== comic.id)
         ))
@@ -58,6 +67,8 @@ export default function useCharacterComics(characterId: number, inView: boolean)
       }
       catch (error) {
         console.log(error)
+        setLoadingCharacterComics(false)
+        setResultsFound(false)
       }
     }
 
@@ -69,6 +80,7 @@ export default function useCharacterComics(characterId: number, inView: boolean)
   return {
     characterComics,
     characterComicsResultsNumber,
-    loadingCharacterComics
+    loadingCharacterComics,
+    resultsFound
   }
 }
