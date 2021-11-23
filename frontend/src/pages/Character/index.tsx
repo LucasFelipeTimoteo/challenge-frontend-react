@@ -12,12 +12,17 @@ import SectionInfo from '../../parts/GLOBAL/SectionInfo'
 export default function Character() {
   const { selectedCharacter, loadingSelectedCharacter } = useSeletedUser()
   const { inView, ref } = useInView()
-  
+
   const {
     characterComics,
-    characterComicsCount,
-    loadingCharacterComics
+    characterComicsResultsNumber,
+    loadingCharacterComics,
+    resultsFound
   } = useCharacterComics(selectedCharacter.id, inView)
+
+  const loadingCondition = (
+    (loadingCharacterComics || loadingSelectedCharacter) && resultsFound
+  )
 
   return (
     <>
@@ -25,12 +30,12 @@ export default function Character() {
       <Hero characterPage>
         <HorizontalCard />
       </Hero>
-      <SectionInfo characterPage characterComicsCount={characterComicsCount} />
+      <SectionInfo characterPage characterComicsResultsNumber={characterComicsResultsNumber} />
       <CharacterInfo
         characterComics={characterComics}
         ref={ref}
       />
-      {(loadingCharacterComics || loadingSelectedCharacter) && (
+      {loadingCondition && (
         <Loading />
       )}
     </>
