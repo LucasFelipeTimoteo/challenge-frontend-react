@@ -57,7 +57,6 @@ export default function useCharacters(
         
         setCharacters(prev => [...prev, ...characterList])
         setcharactersCount(resultsNumber)
-        handleOffset()
         setLocalStorageData('characters', {list: newCharacterList})
         setLocalStorageData('charactersCount', {item: resultsNumber})
 
