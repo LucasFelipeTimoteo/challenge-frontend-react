@@ -6,5 +6,6 @@ export type HorizontalCardProps = {
   comicDescription?: string,
   comicDate?: string,
   characterComicsPageCount?: number
-  comicPrintPrice?: number
+  comicPrintPrice?: number,
+  lastVisibleHorizontalCard?: boolean
 }
