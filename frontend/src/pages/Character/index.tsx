@@ -1,5 +1,6 @@
 import React from 'react'
 import CharacterInfo from '../../components/CharacterInfo'
+import { useInView } from 'react-intersection-observer'
 import Header from '../../components/Header'
 import Hero from '../../components/Hero'
 import { useSeletedUser } from '../../contexts/selectedCharacter'
@@ -10,12 +11,13 @@ import SectionInfo from '../../parts/GLOBAL/SectionInfo'
 
 export default function Character() {
   const { selectedCharacter, loadingSelectedCharacter } = useSeletedUser()
-
+  const { inView, ref } = useInView()
+  
   const {
     characterComics,
     characterComicsCount,
     loadingCharacterComics
-  } = useCharacterComics(selectedCharacter.id)
+  } = useCharacterComics(selectedCharacter.id, inView)
 
   return (
     <>
@@ -26,6 +28,7 @@ export default function Character() {
       <SectionInfo characterPage characterComicsCount={characterComicsCount} />
       <CharacterInfo
         characterComics={characterComics}
+        ref={ref}
       />
       {(loadingCharacterComics || loadingSelectedCharacter) && (
         <Loading />
