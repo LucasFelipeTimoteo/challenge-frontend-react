@@ -7,7 +7,7 @@ import characterComicsTypeGuard from "./utils/characterComicsTypeGuard";
 
 export default function useCharacterComics(characterId: number, inView: boolean) {
   const [characterComics, setCharacterComics] = useState<ICharacterComics[]>([])
-  const [characterComicsCount, setCharacterComicsCount] = useState(0)
+  const [characterComicsResultsNumber, setCharacterComicsResultsNumber] = useState(0)
   const [loadingCharacterComics, setLoadingCharacterComics] = useState(false)
 
   const firstRenderFetchCondition = (characterId && characterComics.length === 0 && !loadingCharacterComics)
@@ -40,7 +40,7 @@ export default function useCharacterComics(characterId: number, inView: boolean)
         const apiRequest = await api('comics')
 
         const response = apiRequest.data
-        const characterComicsCount = response.data.count
+        const comicsResultsNumber = response.data.total
         const characterComicsList = response.data.results
 
         if (!characterComicsTypeGuard(characterComicsList)) {
@@ -52,7 +52,7 @@ export default function useCharacterComics(characterId: number, inView: boolean)
         ))
 
         setCharacterComics(prev => [...prev, ...characterComicsListWithoutDuplicates])
-        setCharacterComicsCount(characterComicsCount)
+        setCharacterComicsResultsNumber(comicsResultsNumber)
 
         setLoadingCharacterComics(false)
       }
@@ -68,7 +68,7 @@ export default function useCharacterComics(characterId: number, inView: boolean)
 
   return {
     characterComics,
-    characterComicsCount,
+    characterComicsResultsNumber,
     loadingCharacterComics
   }
 }

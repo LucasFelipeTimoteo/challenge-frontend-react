@@ -15,7 +15,7 @@ export default function SectionInfo({
   toggleLoadMoreData,
   loadMoreData,
   searchKey,
-  characterComicsCount
+  characterComicsResultsNumber
 }: ISectionInfoProps) {
   const {
     conditionalSectionInfoCharacterPage,
@@ -56,7 +56,7 @@ export default function SectionInfo({
         searchResultsNotFound={searchResultsNotFound}
         loadingSearchCharacters={loadingSearchCharacters}
         characterPage={characterPage}
-        characterComicsCount={characterComicsCount}
+        characterComicsResultsNumber={characterComicsResultsNumber}
       />
     </div>
   )

@@ -4,5 +4,5 @@ export interface ISectionResultsProps {
   searchResultsNotFound?: boolean,
   loadingSearchCharacters?: boolean,
   characterPage?: boolean,
-  characterComicsCount?: number
+  characterComicsResultsNumber?: number
 }

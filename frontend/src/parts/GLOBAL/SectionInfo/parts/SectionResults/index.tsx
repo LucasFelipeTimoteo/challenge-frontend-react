@@ -9,11 +9,11 @@ export default function SectionResults({
   searchResultsNotFound,
   loadingSearchCharacters,
   characterPage,
-  characterComicsCount
+  characterComicsResultsNumber
 }: ISectionResultsProps) {
   const { sectionResultsText } = useStyles()
   const currentListTotalResults = totalSearchResults || (
-    characterPage ? characterComicsCount : charactersCount
+    characterPage ? characterComicsResultsNumber : charactersCount
   )
 
   const totalResultsNumberDisplay = (

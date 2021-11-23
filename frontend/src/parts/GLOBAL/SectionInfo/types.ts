@@ -8,5 +8,5 @@ export interface ISectionInfoProps  {
   toggleLoadMoreData?: () => void,
   loadMoreData?: boolean,
   searchKey?: string
-  characterComicsCount?: number
+  characterComicsResultsNumber?: number
 }
