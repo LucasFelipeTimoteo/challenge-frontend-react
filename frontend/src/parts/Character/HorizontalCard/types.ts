@@ -1,4 +1,4 @@
-export type HorizontalCardProps = {
+export interface IHorizontalCardProps {
   comic?: boolean,
   comicThumbnailPath?: string,
   comicThumbnailExtension?: string,
