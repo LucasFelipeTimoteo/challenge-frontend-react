@@ -18,9 +18,10 @@ export default function Characters() {
   const { ref, inView } = useInView()
   const { loadMoreData, toggleLoadMoreData } = useLoadMoreData()
   const { searchCharactersList, totalSearchResults, loadingSearchCharacters } = useSearchCharactersList({ searchKey })
-  const { characters, loadingCharacters, charactersCount } = useCharacters(inView, loadMoreData, searchKey)
+  const { characters, loadingCharacters, charactersCount, resultsFound } = useCharacters(inView, loadMoreData, searchKey)
 
   const searchResultsNotFound = Boolean(searchCharactersList.length === 0 && searchKey && !loadingSearchCharacters)
+  const loadingCondition = (loadingCharacters || loadingSearchCharacters) && !searchResultsNotFound && resultsFound
   const currentCharactersList = (
     searchCharactersList.length > 0 && searchKey ? searchCharactersList : characters
   )
@@ -55,7 +56,7 @@ export default function Characters() {
       />
 
       {
-        ((loadingCharacters || loadingSearchCharacters) && !searchResultsNotFound) && (
+        loadingCondition && (
           <Loading />
         )
       }
