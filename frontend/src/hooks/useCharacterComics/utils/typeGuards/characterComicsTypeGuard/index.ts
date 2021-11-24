@@ -1,4 +1,4 @@
-import { ICharacterComics } from "../../types";
+import { ICharacterComics } from "../../../types";
 
 const characterComicsTypeGuard = (characterComicsList: any): characterComicsList is ICharacterComics[] => {
   if (!Array.isArray(characterComicsList)) {
