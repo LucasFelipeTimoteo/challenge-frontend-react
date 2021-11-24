@@ -6,13 +6,13 @@ import marvelCharactersApi from '../../services/api/marvelCharactersApi';
 import getURLPathId from '../../utils/getURLPathId';
 import setLocalStorageData from '../../utils/setListToLocalStorage';
 import { IContextValue, ISelectedCharacterProps } from './types';
-import getStorageSelectedCharacterOrUseDefault from './utils/getStorageSelectedCharacterOrUseDefault';
+import getStorageSelectedCharacter from './utils/getStorageSelectedCharacter';
 import singleCharacterTypeGuard from './utils/typeGuards/singleCharacterTypeGuard';
 
 const selectedCharacterContext = createContext({} as IContextValue)
 
 export function SelectedCharacterProvider({ children }: ISelectedCharacterProps) {
-  const storageSelectedCharacterValue = getStorageSelectedCharacterOrUseDefault()
+  const storageSelectedCharacterValue = getStorageSelectedCharacter()
   const pathId = getURLPathId()
   const storageCharacterIdIsTheSameOfPath = (
     'id' in storageSelectedCharacterValue && storageSelectedCharacterValue.id === pathId
