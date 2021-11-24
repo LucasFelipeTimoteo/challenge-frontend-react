@@ -13,10 +13,10 @@ export default function useCharacters(
   searchKey: string
 ) {
   const defaultCharactersValue = getStorageCharacters()
-  const defaultCharactersCountValue = getStorageCharactersResultsNumber()
+  const defaultCharactersResultsNumberValue = getStorageCharactersResultsNumber()
 
   const [characters, setCharacters] = useState(defaultCharactersValue)
-  const [charactersCount, setcharactersCount] = useState(defaultCharactersCountValue)
+  const [charactersCount, setcharactersCount] = useState(defaultCharactersResultsNumberValue)
   const [loadingCharacters, setLoadingCharacters] = useState(false)
   const [resultsFound, setResultsFound] = useState(true)
 
