@@ -1,6 +1,6 @@
 import { storagePathOptions } from "../../types"
 
-const getCurrentStorage = (storagePath: storagePathOptions) => {
+const getCurrentStorage = (storagePath: storagePathOptions, optionalItemIdParam: number | null) => {
   const defaultPathFragment = 'MARVEL_STRIKE_TEAM_'
   let favoriteCharactersStoragePath = ''
 
@@ -24,6 +24,16 @@ const getCurrentStorage = (storagePath: storagePathOptions) => {
     favoriteCharactersStoragePath = defaultPathFragment + currentPathFragment
   }
 
+  if(storagePath === 'comics' && optionalItemIdParam) {
+    const currentPathFragment = `FETCHED_${optionalItemIdParam}_COMICS`
+    favoriteCharactersStoragePath = defaultPathFragment + currentPathFragment
+  }
+
+  if(storagePath === 'comicsResultsNumber' && optionalItemIdParam) {
+    const currentPathFragment = `FETCHED_${optionalItemIdParam}_COMICS_RESULTS_NUMBER`
+    favoriteCharactersStoragePath = defaultPathFragment + currentPathFragment
+  }
+  
   return favoriteCharactersStoragePath
 }
 
