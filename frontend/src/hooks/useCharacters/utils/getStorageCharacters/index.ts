@@ -3,7 +3,7 @@ import { ICharacter } from "../../types"
 
 let defaultCharacterValue: ICharacter[] = []
 
-const getStorageCharactersOrUseDefault = () => {
+const getStorageCharacters = () => {
   const storageCharacters = window.localStorage.getItem('MARVEL_STRIKE_TEAM_FETCHED_CHARACTERS')
   if (!storageCharacters) {
     return defaultCharacterValue
@@ -22,4 +22,4 @@ const getStorageCharactersOrUseDefault = () => {
   }
 }
 
-export default getStorageCharactersOrUseDefault
+export default getStorageCharacters
