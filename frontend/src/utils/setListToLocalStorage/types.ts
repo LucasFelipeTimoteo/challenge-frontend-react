@@ -6,6 +6,7 @@ export type storagePathOptions = (
   "characters" |
   "selectedCharacter" |
   "comics" |
+  'comicsResultsNumber' |
   "charactersCount"
 )
 
@@ -13,5 +14,6 @@ type IStorageItem = ICharacter | ICharacterComics
 
 export interface ISetLocalStorageData {
   item?: IStorageItem,
-  list?: IStorageItem[]
+  list?: IStorageItem[],
+  itemId?: number
 }
