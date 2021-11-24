@@ -3,7 +3,7 @@ import { ICharacter } from "../../../../hooks/useCharacters/types"
 
 let defaultCharacterValue: ICharacter[] = []
 
-const getStorageFavoriteCharactersOrUseDefault = () => {
+const getStorageFavoriteCharacters = () => {
   const storageFavoriteCharacters = window.localStorage.getItem('MARVEL_STRIKE_TEAM_FETCHED_CHARACTERS_FAVORITES')
   if (!storageFavoriteCharacters) {
     return defaultCharacterValue
@@ -22,4 +22,4 @@ const getStorageFavoriteCharactersOrUseDefault = () => {
   }
 }
 
-export default getStorageFavoriteCharactersOrUseDefault
+export default getStorageFavoriteCharacters
