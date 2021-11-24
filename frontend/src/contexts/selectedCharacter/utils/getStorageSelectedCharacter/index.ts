@@ -3,7 +3,7 @@ import singleCharacterTypeGuard from "../typeGuards/singleCharacterTypeGuard"
 
 let defaultCharacterValue = {} as ICharacter
 
-const getStorageSelectedCharacterOrUseDefault = () => {
+const getStorageSelectedCharacter = () => {
   const storageCharacters = window.localStorage.getItem('MARVEL_STRIKE_TEAM_SELECTED_CHARACTER')
   if (!storageCharacters) {
     return defaultCharacterValue
@@ -18,4 +18,4 @@ const getStorageSelectedCharacterOrUseDefault = () => {
   }
 }
 
-export default getStorageSelectedCharacterOrUseDefault
+export default getStorageSelectedCharacter
