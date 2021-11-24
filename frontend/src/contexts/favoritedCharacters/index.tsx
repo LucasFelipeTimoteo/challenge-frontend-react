@@ -2,12 +2,12 @@ import { createContext, useContext, useState } from 'react'
 import { ICharacter } from '../../hooks/useCharacters/types'
 import setLocalStorageData from '../../utils/setListToLocalStorage'
 import { IFavoriteCharactersContextValues, IFavoriteCharactersProviderProps } from './types'
-import getStorageFavoriteCharactersOrUseDefault from './utils/getStorageCharactersOrUseDefault'
+import getStorageFavoriteCharacters from './utils/getStorageFavoriteCharacters'
 
 const FavoriteCharactersContext = createContext({} as IFavoriteCharactersContextValues)
 
 export function FavoriteCharactersProvider({ children }: IFavoriteCharactersProviderProps) {
-  const defaultFavoriteCharacters = getStorageFavoriteCharactersOrUseDefault()
+  const defaultFavoriteCharacters = getStorageFavoriteCharacters()
 
   const [favoriteCharacters, setFavoriteCharacters] = useState<ICharacter[]>(
     defaultFavoriteCharacters
