@@ -1,5 +1,5 @@
 import singleCharacterTypeGuard from "../../contexts/selectedCharacter/utils/typeGuards/singleCharacterTypeGuard"
-import characterComicsTypeGuard from "../../hooks/useCharacterComics/utils/characterComicsTypeGuard"
+import characterComicsTypeGuard from "../../hooks/useCharacterComics/utils/typeGuards/characterComicsTypeGuard"
 import { ISetLocalStorageData, storagePathOptions } from "./types"
 import getCurrentStorage from "./utils/getCurrentStorage"
 
@@ -7,11 +7,14 @@ function setLocalStorageData(
   storagePath: storagePathOptions,
   {
     item,
-    list
+    list,
+    itemId
   }: ISetLocalStorageData
 ) {
   let storageData
-  const currentStoragePath = getCurrentStorage(storagePath)
+
+  const optionalItemIdParam = itemId ? itemId : null
+  const currentStoragePath = getCurrentStorage(storagePath, optionalItemIdParam)
 
   if (
     list &&
