@@ -1,13 +1,19 @@
 import md5 from "md5";
 import { useEffect, useState } from "react";
 import marvelComicsApi from "../../services/api/marvelComicsApi";
+import setLocalStorageData from "../../utils/setListToLocalStorage";
 import getEnvVariables from "../utils/getEnvVariables";
 import { ICharacterComics } from "./types";
-import characterComicsTypeGuard from "./utils/characterComicsTypeGuard";
+import getStorageCharacterComics from "./utils/getStorageCharacterComics";
+import getStorageCharacterComicsResultsNumber from "./utils/getStorageCharacterComicsResultsNumber";
+import characterComicsTypeGuard from "./utils/typeGuards/characterComicsTypeGuard";
 
 export default function useCharacterComics(characterId: number, inView: boolean) {
-  const [characterComics, setCharacterComics] = useState<ICharacterComics[]>([])
-  const [characterComicsResultsNumber, setCharacterComicsResultsNumber] = useState(0)
+  const characterComicsDefaultValue = getStorageCharacterComics(characterId)
+  const characterComicsResultsNumberDefaultValue = getStorageCharacterComicsResultsNumber(characterId)
+
+  const [characterComics, setCharacterComics] = useState<ICharacterComics[]>(characterComicsDefaultValue)
+  const [characterComicsResultsNumber, setCharacterComicsResultsNumber] = useState(characterComicsResultsNumberDefaultValue)
   const [loadingCharacterComics, setLoadingCharacterComics] = useState(false)
   const [resultsFound, setResultsFound] = useState(true)
 
@@ -62,6 +68,10 @@ export default function useCharacterComics(characterId: number, inView: boolean)
 
         setCharacterComics(prev => [...prev, ...characterComicsListWithoutDuplicates])
         setCharacterComicsResultsNumber(comicsResultsNumber)
+
+        const newComicsList = [...characterComics, ...characterComicsListWithoutDuplicates]
+        setLocalStorageData('comics', { list: newComicsList, itemId: characterId })
+        setLocalStorageData('comicsResultsNumber', { item: comicsResultsNumber, itemId: characterId })
 
         setLoadingCharacterComics(false)
       }
