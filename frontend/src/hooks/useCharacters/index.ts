@@ -3,8 +3,8 @@ import { useEffect, useState } from "react"
 import marvelCharactersApi from "../../services/api/marvelCharactersApi"
 import getEnvVariables from "../utils/getEnvVariables"
 import charactersListTypeGuard from "./utils/typeGuards/charactersListTypeGuard"
-import getStorageCharactersOrUseDefault from './utils/getStorageCharactersOrUseDefault'
-import getStorageCharactersResultsCountOrUseDefault from "./utils/getStorageCharactersResultsCountOrUseDefault"
+import getStorageCharacters from './utils/getStorageCharacters'
+import getStorageCharactersResultsNumber from "./utils/getStorageCharactersResultsNumber"
 import setLocalStorageData from "../../utils/setListToLocalStorage"
 
 export default function useCharacters(
@@ -12,8 +12,8 @@ export default function useCharacters(
   loadMoreData: boolean,
   searchKey: string
 ) {
-  const defaultCharactersValue = getStorageCharactersOrUseDefault()
-  const defaultCharactersCountValue = getStorageCharactersResultsCountOrUseDefault()
+  const defaultCharactersValue = getStorageCharacters()
+  const defaultCharactersCountValue = getStorageCharactersResultsNumber()
 
   const [characters, setCharacters] = useState(defaultCharactersValue)
   const [charactersCount, setcharactersCount] = useState(defaultCharactersCountValue)
