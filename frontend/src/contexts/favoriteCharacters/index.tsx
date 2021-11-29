@@ -1,10 +1,10 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useState } from 'react'
 import { ICharacter } from '../../hooks/useCharacters/types'
 import setLocalStorageData from '../../utils/setListToLocalStorage'
 import { IFavoriteCharactersContextValues, IFavoriteCharactersProviderProps } from './types'
 import getStorageFavoriteCharacters from './utils/getStorageFavoriteCharacters'
 
-const FavoriteCharactersContext = createContext({} as IFavoriteCharactersContextValues)
+export const FavoriteCharactersContext = createContext({} as IFavoriteCharactersContextValues)
 
 export function FavoriteCharactersProvider({ children }: IFavoriteCharactersProviderProps) {
   const defaultFavoriteCharacters = getStorageFavoriteCharacters()
@@ -24,7 +24,6 @@ export function FavoriteCharactersProvider({ children }: IFavoriteCharactersProv
         'favoriteCharacters',
         { list: favoriteCharacters, item: character }
       )
-
     }
   }
 
@@ -51,18 +50,4 @@ export function FavoriteCharactersProvider({ children }: IFavoriteCharactersProv
       {children}
     </FavoriteCharactersContext.Provider>
   )
-}
-
-export function useFavoriteCharacterProvider() {
-  const {
-    favoriteCharacters,
-    addFavoriteCharacter,
-    removeFavoriteCharacter
-  } = useContext(FavoriteCharactersContext)
-
-  return {
-    favoriteCharacters,
-    addFavoriteCharacter,
-    removeFavoriteCharacter
-  }
 }
