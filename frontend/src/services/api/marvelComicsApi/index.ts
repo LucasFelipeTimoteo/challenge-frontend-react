@@ -3,11 +3,10 @@ import { IMarvelComicsApiProps } from "./types";
 
 export default function marvelComicsApi({
   limit,
-  handleOffset,
+  offset,
   timestamp,
   publicKey,
   hash,
-  nameStartsWith,
   characterId
 }: IMarvelComicsApiProps) {
   const api = axios.create({
@@ -18,8 +17,7 @@ export default function marvelComicsApi({
       ts: timestamp,
       apikey: publicKey,
       hash,
-      ...(handleOffset && { offset: handleOffset() }),
-      ...(nameStartsWith && { nameStartsWith }),
+      offset,
       ...(characterId && { characters: characterId })
     }
   })

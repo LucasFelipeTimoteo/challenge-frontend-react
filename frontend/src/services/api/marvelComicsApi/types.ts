@@ -3,7 +3,6 @@ export interface IMarvelComicsApiProps {
   timestamp: string
   publicKey: string
   hash: string,
-  handleOffset?: () => string
-  nameStartsWith?: string
+  offset: string
   characterId?: string
 }
