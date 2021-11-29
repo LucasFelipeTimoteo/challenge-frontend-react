@@ -15,7 +15,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     }
   },
 
-  conditionalSectionInfoCharacterPage: {
+  characterPageSectionInfoContainer: {
     margin: `100px ${symmetricSideMarginStyleVar} 34px`
   },
 

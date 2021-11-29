@@ -18,7 +18,7 @@ export default function SectionInfo({
   characterComicsResultsNumber
 }: ISectionInfoProps) {
   const {
-    conditionalSectionInfoCharacterPage,
+    characterPageSectionInfoContainer,
     sectionInfoContainer,
     loadMoredataSwitchLabel
   } = useStyles()
@@ -26,7 +26,7 @@ export default function SectionInfo({
   return (
     <div className={
       `${sectionInfoContainer}
-       ${characterPage && conditionalSectionInfoCharacterPage}`
+       ${characterPage && characterPageSectionInfoContainer}`
     }>
       <SectionTitle
         characterPage={characterPage}
