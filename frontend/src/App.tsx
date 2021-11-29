@@ -3,7 +3,7 @@ import './styles/App.css';
 import { SelectedCharacterProvider } from './contexts/selectedCharacter';
 import { MUIThemeProvider } from './styles/themes/MUITheme';
 import Routes from './Routes';
-import { FavoriteCharactersProvider } from './contexts/favoritedCharacters';
+import { FavoriteCharactersProvider } from './contexts/favoriteCharacters';
 
 function App() {
   return (
