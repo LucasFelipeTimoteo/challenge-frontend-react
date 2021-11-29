@@ -1,5 +1,5 @@
 import singleCharacterTypeGuard from "../../contexts/selectedCharacter/utils/typeGuards/singleCharacterTypeGuard"
-import characterComicsTypeGuard from "../../hooks/useCharacterComics/utils/typeGuards/characterComicsTypeGuard"
+import charactersListTypeGuard from "../../hooks/useCharacters/utils/typeGuards/charactersListTypeGuard"
 import { ISetLocalStorageData, storagePathOptions } from "./types"
 import getCurrentStorage from "./utils/getCurrentStorage"
 
@@ -11,20 +11,33 @@ function setLocalStorageData(
     itemId
   }: ISetLocalStorageData
 ) {
-  let storageData
 
+  if (new Blob(Object.values(localStorage)).size >= 4030000) {
+    return
+  }
+
+  let storageData
   const optionalItemIdParam = itemId ? itemId : null
   const currentStoragePath = getCurrentStorage(storagePath, optionalItemIdParam)
 
   if (
     list &&
     item &&
-    (singleCharacterTypeGuard(item) || characterComicsTypeGuard(item))
+    singleCharacterTypeGuard(item)
   ) {
     storageData = [...list, item]
   }
 
   if (list && !item) {
+    const isCharactersList = charactersListTypeGuard(list)
+
+    if (list.length >= 160 && isCharactersList) {
+      list.length = 160
+    }
+    if (list.length >= 20 && !isCharactersList) {
+      list.length = 20
+    }
+
     storageData = list
   }
 
