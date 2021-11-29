@@ -3,14 +3,14 @@ import CharacterInfo from '../../components/CharacterInfo'
 import { useInView } from 'react-intersection-observer'
 import Header from '../../components/Header'
 import Hero from '../../components/Hero'
-import { useSeletedUser } from '../../contexts/selectedCharacter'
+import { useSeletedCharacter } from '../../contexts/selectedCharacter/hooks/useSelectedCharacterProvider'
 import useCharacterComics from '../../hooks/useCharacterComics'
 import HorizontalCard from '../../parts/Character/HorizontalCard'
 import Loading from '../../parts/GLOBAL/Loading'
 import SectionInfo from '../../parts/GLOBAL/SectionInfo'
 
 export default function Character() {
-  const { selectedCharacter, loadingSelectedCharacter } = useSeletedUser()
+  const { selectedCharacter, loadingSelectedCharacter } = useSeletedCharacter()
   const { inView, ref } = useInView()
 
   const {

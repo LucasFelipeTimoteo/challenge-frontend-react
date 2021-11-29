@@ -1,5 +1,5 @@
 import md5 from 'md5';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { ICharacter } from '../../hooks/useCharacters/types';
 import getEnvVariables from '../../hooks/utils/getEnvVariables';
 import marvelCharactersApi from '../../services/api/marvelCharactersApi';
@@ -9,7 +9,7 @@ import { IContextValue, ISelectedCharacterProps } from './types';
 import getStorageSelectedCharacter from './utils/getStorageSelectedCharacter';
 import singleCharacterTypeGuard from './utils/typeGuards/singleCharacterTypeGuard';
 
-const selectedCharacterContext = createContext({} as IContextValue)
+export const SelectedCharacterContext = createContext({} as IContextValue)
 
 export function SelectedCharacterProvider({ children }: ISelectedCharacterProps) {
   const storageSelectedCharacterValue = getStorageSelectedCharacter()
@@ -73,18 +73,8 @@ export function SelectedCharacterProvider({ children }: ISelectedCharacterProps)
   const contextValue = { selectedCharacter, handleSelectedCharacter, loadingSelectedCharacter }
 
   return (
-    <selectedCharacterContext.Provider value={contextValue}>
+    <SelectedCharacterContext.Provider value={contextValue}>
       {children}
-    </selectedCharacterContext.Provider>
+    </SelectedCharacterContext.Provider>
   )
-}
-
-export const useSeletedUser = () => {
-  const {
-    selectedCharacter,
-    handleSelectedCharacter,
-    loadingSelectedCharacter
-  } = useContext(selectedCharacterContext)
-
-  return { selectedCharacter, handleSelectedCharacter, loadingSelectedCharacter }
 }

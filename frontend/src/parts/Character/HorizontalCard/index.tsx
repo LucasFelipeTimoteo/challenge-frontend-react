@@ -7,7 +7,7 @@ import {
   useTheme
 } from '@material-ui/core'
 import React, { forwardRef } from 'react'
-import { useSeletedUser } from '../../../contexts/selectedCharacter'
+import { useSeletedCharacter } from '../../../contexts/selectedCharacter/hooks/useSelectedCharacterProvider'
 import useCardImageFocused from '../../../hooks/useCardImageFocused'
 import CardPhotoViwer from './CardPhotoViwer'
 import ComicInfo from './ComicInfo'
@@ -29,7 +29,7 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
   ref
 ) => {
   const { cardImageFocused, toggleCardImageFocused } = useCardImageFocused()
-  const { selectedCharacter, loadingSelectedCharacter } = useSeletedUser()
+  const { selectedCharacter, loadingSelectedCharacter } = useSeletedCharacter()
   const { breakpoints } = useTheme()
   const query = useMediaQuery(`(max-width:${breakpoints.values.sm}px)`)
 
