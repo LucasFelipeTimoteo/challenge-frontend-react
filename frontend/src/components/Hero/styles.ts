@@ -25,7 +25,7 @@ export const useStyles = makeStyles({
     margin: `30px ${symmetricSideMarginStyleVar} 0`,
   },
 
-  characterConditionalHeroContentContainer: {
+  characterPageHeroContentContainer: {
     justifyContent: 'flex-end',
     height: '105%',
     marginTop: 120

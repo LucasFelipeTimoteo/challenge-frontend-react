@@ -17,7 +17,7 @@ export default function Hero({
     HeroContainer,
     teamPageHeroContainer,
     heroContentContainer,
-    characterConditionalHeroContentContainer,
+    characterPageHeroContentContainer,
     heroText,
   } = useStyles()
 
@@ -29,7 +29,7 @@ export default function Hero({
 
       <div className={
         `${heroContentContainer}
-         ${characterPage && characterConditionalHeroContentContainer}`
+         ${characterPage && characterPageHeroContentContainer}`
       }>
 
         {
