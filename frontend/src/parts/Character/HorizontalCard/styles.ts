@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     },
   },
 
-  conditionalCardImageFocusedHorizontalCardMedia: {
+  focusedHorizontalCardMedia: {
     [breakpoints.down(breakpoints.values.sm)]: {
       clipPath: 'circle(100%)',
     },

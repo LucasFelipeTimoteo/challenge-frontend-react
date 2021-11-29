@@ -38,7 +38,7 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
     horizontalCardInfo,
     horizontalCardMedia,
     conditionalComicHorizontalCardMedia,
-    conditionalCardImageFocusedHorizontalCardMedia,
+    focusedHorizontalCardMedia,
     conditionalComicHorizontalCardInfo,
     horizontalCardDescription
   } = useStyles()
@@ -64,7 +64,7 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
         className={
           `${horizontalCardMedia}
            ${comic && conditionalComicHorizontalCardMedia}
-           ${cardImageFocused && conditionalCardImageFocusedHorizontalCardMedia}`
+           ${cardImageFocused && focusedHorizontalCardMedia}`
         }
         onClick={toggleCardImageFocused}
       />
