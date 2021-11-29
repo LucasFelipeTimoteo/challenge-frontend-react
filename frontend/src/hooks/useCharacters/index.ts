@@ -6,6 +6,7 @@ import charactersListTypeGuard from "./utils/typeGuards/charactersListTypeGuard"
 import getStorageCharacters from './utils/getStorageCharacters'
 import getStorageCharactersResultsNumber from "./utils/getStorageCharactersResultsNumber"
 import setLocalStorageData from "../../utils/setListToLocalStorage"
+import handleOffset from "../utils/handleOffset"
 
 export default function useCharacters(
   inView: boolean,
@@ -36,18 +37,13 @@ export default function useCharacters(
       const timestamp = String(Date.now())
       const { privateKey, publicKey, limit } = getEnvVariables()
       const hash = md5(timestamp + privateKey + publicKey)
-
-      const handleOffset = () => {
-        const totalPageCharacters = characters.length
-        const newOffset = String(totalPageCharacters)
-        return newOffset
-      }
+      const offset = handleOffset(characters)
 
       try {
         const api = marvelCharactersApi({
           limit,
           publicKey,
-          handleOffset,
+          offset,
           hash,
           timestamp
         })

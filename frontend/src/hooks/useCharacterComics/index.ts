@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import marvelComicsApi from "../../services/api/marvelComicsApi";
 import setLocalStorageData from "../../utils/setListToLocalStorage";
 import getEnvVariables from "../utils/getEnvVariables";
+import handleOffset from "../utils/handleOffset";
 import { ICharacterComics } from "./types";
 import getStorageCharacterComics from "./utils/getStorageCharacterComics";
 import getStorageCharacterComicsResultsNumber from "./utils/getStorageCharacterComicsResultsNumber";
@@ -33,12 +34,7 @@ export default function useCharacterComics(characterId: number, inView: boolean)
       const timestamp = String(Date.now())
       const { privateKey, publicKey, limit } = getEnvVariables()
       const hash = md5(timestamp + privateKey + publicKey)
-
-      const handleOffset = () => {
-        const totalPageCharacters = characterComics.length
-        const newOffset = String(totalPageCharacters)
-        return newOffset
-      }
+      const offset = handleOffset(characterComics)
 
       try {
         const api = marvelComicsApi({
@@ -47,7 +43,7 @@ export default function useCharacterComics(characterId: number, inView: boolean)
           hash,
           timestamp,
           characterId: String(characterId),
-          handleOffset
+          offset
         })
 
         const apiRequest = await api('comics')
