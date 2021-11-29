@@ -37,7 +37,7 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
     horizontalCardContainer,
     horizontalCardInfo,
     horizontalCardMedia,
-    conditionalComicHorizontalCardMedia,
+    comicPageHorizontalCardMedia,
     focusedHorizontalCardMedia,
     conditionalComicHorizontalCardInfo,
     horizontalCardDescription
@@ -63,7 +63,7 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
         image={currentImage || '/'}
         className={
           `${horizontalCardMedia}
-           ${comic && conditionalComicHorizontalCardMedia}
+           ${comic && comicPageHorizontalCardMedia}
            ${cardImageFocused && focusedHorizontalCardMedia}`
         }
         onClick={toggleCardImageFocused}

@@ -49,7 +49,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     },
   },
 
-  conditionalComicHorizontalCardMedia: {
+  comicPageHorizontalCardMedia: {
     minHeight: '100%',
     minWidth: 265,
     borderRadius: 0,
