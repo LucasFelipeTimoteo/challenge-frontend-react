@@ -3,6 +3,6 @@ export interface ImarvelCharactersApiProps {
   timestamp: string
   publicKey: string
   hash: string,
-  handleOffset?: () => string
+  offset?: string
   nameStartsWith?: string
 }

@@ -3,7 +3,7 @@ import { ImarvelCharactersApiProps } from "./types";
 
 export default function marvelCharactersApi({
   limit,
-  handleOffset,
+  offset,
   timestamp,
   publicKey,
   hash,
@@ -17,7 +17,7 @@ export default function marvelCharactersApi({
       ts: timestamp,
       apikey: publicKey,
       hash,
-      ...(handleOffset && { offset: handleOffset() }),
+      offset,
       ...(nameStartsWith && { nameStartsWith }),
     }
   })
