@@ -8,8 +8,8 @@ import {
 import { DeleteForever, People } from '@material-ui/icons'
 import React, { forwardRef, memo, useState } from 'react'
 import { useHistory } from 'react-router'
-import { useFavoriteCharacterProvider } from '../../../contexts/favoritedCharacters'
-import { useSeletedUser } from '../../../contexts/selectedCharacter'
+import { useFavoriteCharactersProvider } from '../../../contexts/favoriteCharacters/hooks/useFavoriteCharactersProvider'
+import { useSeletedCharacter } from '../../../contexts/selectedCharacter/hooks/useSelectedCharacterProvider'
 import { altCharacterDescription, altCharacterName } from './altTexts'
 import useStyles from './styles'
 import { ICardProps } from './types'
@@ -28,12 +28,12 @@ const Card = forwardRef<Element, ICardProps>((
 ) => {
   const history = useHistory()
   const [cardFocused, setCardFocused] = useState(false)
-  const { handleSelectedCharacter } = useSeletedUser()
+  const { handleSelectedCharacter } = useSeletedCharacter()
   const {
     favoriteCharacters,
     addFavoriteCharacter,
     removeFavoriteCharacter
-  } = useFavoriteCharacterProvider()
+  } = useFavoriteCharactersProvider()
 
   const toggleCardFocused = () => {
     setCardFocused(prev => !prev)
