@@ -55,7 +55,12 @@ export default function Header({ teamPage }: HeaderProps) {
         }
 
         {!query && (
-          <IconButton onClick={handleMenu} className={hamburguerMenuIcon}>
+          <IconButton
+            onClick={handleMenu}
+            className={hamburguerMenuIcon}
+            aria-controls={open ? 'menu-list-grow' : undefined}
+            aria-haspopup="true"
+          >
             <MenuIcon fontSize="large" />
           </IconButton>
         )}
@@ -64,6 +69,7 @@ export default function Header({ teamPage }: HeaderProps) {
           <Menu
             id="menu-appbar"
             anchorEl={anchorEl}
+            getContentAnchorEl={null}
             anchorOrigin={{
               vertical: 'bottom',
               horizontal: 'center',
