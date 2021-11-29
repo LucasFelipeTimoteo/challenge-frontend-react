@@ -13,7 +13,7 @@ export const useStyles = makeStyles({
     position: 'relative'
   },
   
-  teamPageConditionalHeroContainer: {
+  teamPageHeroContainer: {
     paddingBottom: 160
   },
 

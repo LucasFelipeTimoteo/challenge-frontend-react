@@ -15,7 +15,7 @@ export default function Hero({
 
   const {
     HeroContainer,
-    teamPageConditionalHeroContainer,
+    teamPageHeroContainer,
     heroContentContainer,
     characterConditionalHeroContentContainer,
     heroText,
@@ -24,7 +24,7 @@ export default function Hero({
   return (
     <div className={
       `${HeroContainer}
-       ${teamPage && teamPageConditionalHeroContainer}`
+       ${teamPage && teamPageHeroContainer}`
     }>
 
       <div className={
