@@ -16,13 +16,13 @@ const CharactersList = forwardRef<Element, CharacterListProps>((
 
   const {
     charactersListContainer,
-    conditionalTeamPageCharactersListContainer
+    teamPageCharactersListContainer
   } = useStyles()
 
   return (
     <div className={`
         ${charactersListContainer}
-        ${teamPage && conditionalTeamPageCharactersListContainer}
+        ${teamPage && teamPageCharactersListContainer}
         `}>
 
       <CardWrapper>

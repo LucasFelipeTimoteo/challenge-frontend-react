@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     margin: `0 min(2vw, ${symmetricSideMarginStyleVar}) 0`,
   },
 
-  conditionalTeamPageCharactersListContainer: {
+  teamPageCharactersListContainer: {
     transform: 'translateY(-220px)'
   }
 })
