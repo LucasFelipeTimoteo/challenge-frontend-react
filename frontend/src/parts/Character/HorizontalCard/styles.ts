@@ -96,7 +96,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     marginRight: 8
   },
 
-  conditionalComicHorizontalCardInfo: {
+  comicHorizontalCardInfo: {
     gap: 8
   }
 }))

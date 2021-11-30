@@ -40,7 +40,7 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
     horizontalCardMedia,
     comicPageHorizontalCardMedia,
     focusedHorizontalCardMedia,
-    conditionalComicHorizontalCardInfo,
+    comicHorizontalCardInfo,
     horizontalCardDescription
   } = useStyles()
 
@@ -75,7 +75,7 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
 
       <CardContent className={
         `${horizontalCardInfo}
-         ${comic && conditionalComicHorizontalCardInfo}`
+         ${comic && comicHorizontalCardInfo}`
       }>
         <Typography variant="h2">
           {comic ? comicName : selectedCharacter.name}
