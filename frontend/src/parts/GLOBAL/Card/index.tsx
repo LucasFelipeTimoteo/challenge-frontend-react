@@ -1,13 +1,11 @@
 import {
   Card as CardContainer,
-  CardContent, IconButton,
-  Typography
+  CardContent, Typography
 } from '@material-ui/core'
-import { DeleteForever, People } from '@material-ui/icons'
 import React, { forwardRef, memo, useState } from 'react'
-import { useFavoriteCharactersProvider } from '../../../contexts/favoriteCharacters/hooks/useFavoriteCharactersProvider'
 import { altCharacterDescription, altCharacterName } from './altTexts'
 import CardMediaThumbnail from './CardMediaThumbnail'
+import FavoriteCharacterActionButton from './FavoriteCharacterActionButton'
 import useStyles from './styles'
 import { ICardProps } from './types'
 
@@ -25,27 +23,12 @@ const Card = forwardRef<Element, ICardProps>((
   ref
 ) => {
   const [cardFocused, setCardFocused] = useState(false)
-  const {
-    favoriteCharacters,
-    addFavoriteCharacter,
-    removeFavoriteCharacter
-  } = useFavoriteCharactersProvider()
 
   const toggleCardFocused = () => {
     setCardFocused(prev => !prev)
   }
 
-  const handleRemoveFavoriteCharacter = () => {
-    removeFavoriteCharacter(character)
-  }
-
-  const handleAddFavoriteCharacter = () => {
-    addFavoriteCharacter(character)
-  }
-
   const {
-    addFavoritesButton,
-    disfavorButton,
     cardTitle,
     cardWrapper,
     textContentWrapper,
@@ -56,11 +39,6 @@ const Card = forwardRef<Element, ICardProps>((
 
   const parsedCharacterDescription = characterDescription.trim()
 
-  // optimizar usando o useCallback
-  const characterIsFavorited = favoriteCharacters.some(favoritedCharacter => (
-    favoritedCharacter.id === characterId
-  ))
-
   return (
     <>
       <CardContainer
@@ -68,23 +46,19 @@ const Card = forwardRef<Element, ICardProps>((
         ref={lastVisibleCharacter && !inView ? ref : null}
       >
 
-      <CardMediaThumbnail
-        character={character}
-        characterId={characterId}
-        characterName={characterName}
-        characterThumbnail={characterThumbnail}
-        characterThumbnailExtension={characterThumbnailExtension}
-      />
-        <IconButton
-          title={
-            characterIsFavorited ? "Disfavor character" : "Add character to favorites"
-          }
-          onClick={characterIsFavorited ? handleRemoveFavoriteCharacter : handleAddFavoriteCharacter}
-          className={characterIsFavorited ? disfavorButton : addFavoritesButton}
-        >
-          {characterIsFavorited ? <DeleteForever /> : <People />}
-        </IconButton>
+        <CardMediaThumbnail
+          character={character}
+          characterId={characterId}
+          characterName={characterName}
+          characterThumbnail={characterThumbnail}
+          characterThumbnailExtension={characterThumbnailExtension}
+        />
 
+        <FavoriteCharacterActionButton
+          character={character}
+          characterId={characterId}
+        />
+        
         <CardContent className={textContentWrapper} onClick={toggleCardFocused}>
 
           <Typography
