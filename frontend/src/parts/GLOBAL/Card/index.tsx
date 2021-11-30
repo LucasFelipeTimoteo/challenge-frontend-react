@@ -23,6 +23,7 @@ const Card = forwardRef<Element, ICardProps>((
     characterName,
     characterDescription,
     lastVisibleCharacter,
+    inView
   },
   ref
 ) => {
@@ -74,7 +75,10 @@ const Card = forwardRef<Element, ICardProps>((
 
   return (
     <>
-      <CardContainer className={cardWrapper} ref={lastVisibleCharacter ? ref : null}>
+      <CardContainer
+        className={cardWrapper}
+        ref={lastVisibleCharacter && !inView ? ref : null}
+      >
         <CardMedia
           className={cardMedia}
           image={imagePath}

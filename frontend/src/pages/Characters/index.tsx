@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useInView } from 'react-intersection-observer'
 import CharactersList from '../../components/CharactersList'
 import Header from '../../components/Header'
@@ -11,7 +11,6 @@ import Searchbar from '../../parts/CharactersList/Searchbar'
 import Loading from '../../parts/GLOBAL/Loading'
 import ResultsNotFound from '../../parts/GLOBAL/ResultsNotFound'
 import SectionInfo from '../../parts/GLOBAL/SectionInfo'
-
 
 export default function Characters() {
   const { ref, inView } = useInView()
@@ -78,6 +77,7 @@ export default function Characters() {
         currentCharactersList={currentCharactersList}
         searchResultsNotFound={searchResultsNotFound}
         loadingSearchCharacters={loadingSearchCharacters}
+        inView={inView}
         ref={ref}
       />
 

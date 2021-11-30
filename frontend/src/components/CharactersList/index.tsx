@@ -10,6 +10,7 @@ const CharactersList = forwardRef<Element, CharacterListProps>((
     currentCharactersList,
     searchResultsNotFound,
     loadingSearchCharacters,
+    inView
   },
   ref
 ) => {
@@ -42,6 +43,7 @@ const CharactersList = forwardRef<Element, CharacterListProps>((
 
                   key={character.id}
                   lastVisibleCharacter={lastVisibleCharacter}
+                  inView={inView}
                   ref={ref}
                 />
               )

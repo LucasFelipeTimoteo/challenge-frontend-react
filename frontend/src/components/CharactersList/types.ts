@@ -5,4 +5,5 @@ export type CharacterListProps = {
   currentCharactersList: ICharacter[],
   searchResultsNotFound?: boolean,
   loadingSearchCharacters?: boolean,
+  inView?: boolean
 }

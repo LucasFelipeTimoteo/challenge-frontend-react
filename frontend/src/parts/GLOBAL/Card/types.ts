@@ -10,6 +10,7 @@ export interface ICardProps {
   characterName: string,
   lastVisibleCharacter: boolean
   characterDescription: string,
+  inView?: boolean
 }
 
 
