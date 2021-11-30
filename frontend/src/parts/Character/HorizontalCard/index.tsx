@@ -9,7 +9,7 @@ import {
 import React, { forwardRef } from 'react'
 import { useSeletedCharacter } from '../../../contexts/selectedCharacter/hooks/useSelectedCharacterProvider'
 import useCardImageFocused from '../../../hooks/useCardImageFocused'
-import CardPhotoViwer from './CardPhotoViwer'
+import HorizontalCardPhotoViwer from './HorizontalCardPhotoViwer'
 import ComicInfo from './ComicInfo'
 import useStyles from './styles'
 import { IHorizontalCardProps } from './types'
@@ -100,7 +100,7 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
         </Typography>
 
       </CardContent>
-      <CardPhotoViwer
+      <HorizontalCardPhotoViwer
         comic={comic || false}
         cardImageFocused={cardImageFocused}
         toggleCardImageFocused={toggleCardImageFocused}

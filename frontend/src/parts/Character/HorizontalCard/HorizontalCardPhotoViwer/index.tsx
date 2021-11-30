@@ -4,7 +4,7 @@ import { ArrowBack, CameraAlt } from '@material-ui/icons'
 import useStyles from './styles'
 import { ICardPhotoViwerProps } from './types'
 
-export default function CardPhotoViwer({
+export default function HorizontalCardPhotoViwer({
   comic,
   cardImageFocused,
   toggleCardImageFocused,
