@@ -3,8 +3,9 @@ import {
   CardContent, Typography
 } from '@material-ui/core'
 import React, { forwardRef, memo, useState } from 'react'
-import { altCharacterDescription, altCharacterName } from './altTexts'
+import { altCharacterDescription } from './altTexts'
 import CardMediaThumbnail from './CardMediaThumbnail'
+import CharacterName from './CharacterName'
 import FavoriteCharacterActionButton from './FavoriteCharacterActionButton'
 import useStyles from './styles'
 import { ICardProps } from './types'
@@ -29,7 +30,6 @@ const Card = forwardRef<Element, ICardProps>((
   }
 
   const {
-    cardTitle,
     cardWrapper,
     textContentWrapper,
     cardDescriptionFullSizeMode,
@@ -60,15 +60,7 @@ const Card = forwardRef<Element, ICardProps>((
         />
         
         <CardContent className={textContentWrapper} onClick={toggleCardFocused}>
-
-          <Typography
-            variant="h2"
-            component="p"
-            title={`The character name is ${characterName}`}
-            className={cardTitle}
-          >
-            {characterName || altCharacterName}
-          </Typography>
+          <CharacterName characterName={characterName} />
 
           <Typography
             variant="body1"

@@ -22,11 +22,6 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     height: '100%'
   },
 
-  cardTitle: {
-    fontWeight: 600,
-    width: '90%'
-  },
-
   cardDescriptionFullSizeMode: {
     position: 'absolute',
     bottom: 0,
