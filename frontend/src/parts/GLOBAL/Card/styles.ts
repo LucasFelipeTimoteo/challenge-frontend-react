@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import { cardScrollbarStyleObjectVar, cardStyleVars } from "../../../styles/globalStyleVariables";
+import { cardStyleVars } from "../../../styles/globalStyleVariables";
 
 const useStyles = makeStyles(({ breakpoints, palette }) => ({
   cardWrapper: {
@@ -20,21 +20,6 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     textAlign: 'left',
     cursor: 'pointer',
     height: '100%'
-  },
-
-  cardDescriptionFullSizeMode: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    width: '100%',
-    height: '100%',
-    background: palette.background.paper,
-    zIndex: 1,
-    padding: '16px 16px 80px',
-    transition: 'background 0.7s',
-    overflow: 'auto',
-
-    ...cardScrollbarStyleObjectVar
   },
 
   readMoreGradientWrapper: {

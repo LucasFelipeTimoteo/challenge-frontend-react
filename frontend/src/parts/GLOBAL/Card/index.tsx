@@ -3,8 +3,8 @@ import {
   CardContent, Typography
 } from '@material-ui/core'
 import React, { forwardRef, memo, useState } from 'react'
-import { altCharacterDescription } from './altTexts'
 import CardMediaThumbnail from './CardMediaThumbnail'
+import CharacterDescription from './CharacterDescription'
 import CharacterName from './CharacterName'
 import FavoriteCharacterActionButton from './FavoriteCharacterActionButton'
 import useStyles from './styles'
@@ -23,21 +23,18 @@ const Card = forwardRef<Element, ICardProps>((
   },
   ref
 ) => {
-  const [cardFocused, setCardFocused] = useState(false)
+  const [cardIsFocused, setCardIsFocused] = useState(false)
 
-  const toggleCardFocused = () => {
-    setCardFocused(prev => !prev)
+  const toggleCardIsFocused = () => {
+    setCardIsFocused(prev => !prev)
   }
 
   const {
     cardWrapper,
     textContentWrapper,
-    cardDescriptionFullSizeMode,
     readMoreGradientWrapper,
     readMoreText
   } = useStyles()
-
-  const parsedCharacterDescription = characterDescription.trim()
 
   return (
     <>
@@ -58,17 +55,13 @@ const Card = forwardRef<Element, ICardProps>((
           character={character}
           characterId={characterId}
         />
-        
-        <CardContent className={textContentWrapper} onClick={toggleCardFocused}>
-          <CharacterName characterName={characterName} />
 
-          <Typography
-            variant="body1"
-            title={parsedCharacterDescription || altCharacterDescription}
-            className={`${cardFocused && cardDescriptionFullSizeMode}`}
-          >
-            {parsedCharacterDescription || altCharacterDescription}
-          </Typography>
+        <CardContent className={textContentWrapper} onClick={toggleCardIsFocused}>
+          <CharacterName characterName={characterName} />
+          <CharacterDescription
+            cardIsFocused={cardIsFocused}
+            characterDescription={characterDescription}
+          />
 
           <div className={readMoreGradientWrapper}>
             <Typography
@@ -77,7 +70,7 @@ const Card = forwardRef<Element, ICardProps>((
               className={readMoreText}
             >
               {
-                cardFocused
+                cardIsFocused
                   ?
                   'click to close full read'
                   :
