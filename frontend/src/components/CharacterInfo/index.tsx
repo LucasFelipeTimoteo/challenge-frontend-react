@@ -7,7 +7,10 @@ import getComicPrintPrice from './utils/getComicPrintPrice'
 import { ICharacterInfoProps } from './utils/types'
 
 const CharacterInfo = forwardRef<Element, ICharacterInfoProps>((
-  { characterComics },
+  { 
+    characterComics,
+    inView
+   },
   ref
 ) => {
   const { characterInfoContainer } = useStyles()
@@ -31,6 +34,7 @@ const CharacterInfo = forwardRef<Element, ICharacterInfoProps>((
                 characterComicsPageCount={comic.pageCount}
                 comicPrintPrice={comicPrintPrice}
                 lastVisibleHorizontalCard={lastVisibleHorizontalCard}
+                inView={inView}
                 key={comic.id}
                 ref={ref}
                 comic

@@ -33,6 +33,7 @@ export default function Character() {
       <SectionInfo characterPage characterComicsResultsNumber={characterComicsResultsNumber} />
       <CharacterInfo
         characterComics={characterComics}
+        inView={inView}
         ref={ref}
       />
       {loadingCondition && (

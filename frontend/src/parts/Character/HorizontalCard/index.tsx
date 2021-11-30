@@ -24,7 +24,8 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
     comicDate,
     characterComicsPageCount,
     comicPrintPrice,
-    lastVisibleHorizontalCard
+    lastVisibleHorizontalCard,
+    inView
   },
   ref
 ) => {
@@ -58,7 +59,10 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
       : headerCharacterPath
 
   return (
-    <CardContainer className={horizontalCardContainer} ref={lastVisibleHorizontalCard ? ref : null}>
+    <CardContainer
+      className={horizontalCardContainer}
+      ref={lastVisibleHorizontalCard && !inView ? ref : null}
+    >
       <CardMedia
         image={currentImage || '/'}
         className={

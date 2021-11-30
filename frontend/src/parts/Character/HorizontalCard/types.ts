@@ -8,4 +8,5 @@ export interface IHorizontalCardProps {
   characterComicsPageCount?: number
   comicPrintPrice?: number,
   lastVisibleHorizontalCard?: boolean
+  inView?: boolean
 }
