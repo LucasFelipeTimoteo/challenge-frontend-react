@@ -1,16 +1,13 @@
 import {
   Card as CardContainer,
-  CardContent,
-  CardMedia,
-  IconButton,
+  CardContent, IconButton,
   Typography
 } from '@material-ui/core'
 import { DeleteForever, People } from '@material-ui/icons'
 import React, { forwardRef, memo, useState } from 'react'
-import { useHistory } from 'react-router'
 import { useFavoriteCharactersProvider } from '../../../contexts/favoriteCharacters/hooks/useFavoriteCharactersProvider'
-import { useSeletedCharacter } from '../../../contexts/selectedCharacter/hooks/useSelectedCharacterProvider'
 import { altCharacterDescription, altCharacterName } from './altTexts'
+import CardMediaThumbnail from './CardMediaThumbnail'
 import useStyles from './styles'
 import { ICardProps } from './types'
 
@@ -27,9 +24,7 @@ const Card = forwardRef<Element, ICardProps>((
   },
   ref
 ) => {
-  const history = useHistory()
   const [cardFocused, setCardFocused] = useState(false)
-  const { handleSelectedCharacter } = useSeletedCharacter()
   const {
     favoriteCharacters,
     addFavoriteCharacter,
@@ -38,10 +33,6 @@ const Card = forwardRef<Element, ICardProps>((
 
   const toggleCardFocused = () => {
     setCardFocused(prev => !prev)
-  }
-
-  const goToCharacterInfoPage = () => {
-    history.push(`character/${characterId}/comics`)
   }
 
   const handleRemoveFavoriteCharacter = () => {
@@ -55,8 +46,6 @@ const Card = forwardRef<Element, ICardProps>((
   const {
     addFavoritesButton,
     disfavorButton,
-    cardMedia,
-    cardMediaOverlay,
     cardTitle,
     cardWrapper,
     textContentWrapper,
@@ -65,7 +54,6 @@ const Card = forwardRef<Element, ICardProps>((
     readMoreText
   } = useStyles()
 
-  const imagePath = `${characterThumbnail}.${characterThumbnailExtension}`
   const parsedCharacterDescription = characterDescription.trim()
 
   // optimizar usando o useCallback
@@ -79,24 +67,14 @@ const Card = forwardRef<Element, ICardProps>((
         className={cardWrapper}
         ref={lastVisibleCharacter && !inView ? ref : null}
       >
-        <CardMedia
-          className={cardMedia}
-          image={imagePath}
-          onClick={() => {
-            handleSelectedCharacter(character)
-            goToCharacterInfoPage()
-          }}
-        >
-          <Typography
-            variant="subtitle2"
-            component="p"
-            className={cardMediaOverlay}
-            title={`click here to explore ${characterName} related content`}
-          >
-            Expore character related content
-          </Typography>
-        </CardMedia>
 
+      <CardMediaThumbnail
+        character={character}
+        characterId={characterId}
+        characterName={characterName}
+        characterThumbnail={characterThumbnail}
+        characterThumbnailExtension={characterThumbnailExtension}
+      />
         <IconButton
           title={
             characterIsFavorited ? "Disfavor character" : "Add character to favorites"
