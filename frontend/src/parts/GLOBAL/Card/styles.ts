@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import { cardStyleVars } from "../../../styles/globalStyleVariables";
 
-const useStyles = makeStyles(({ breakpoints, palette }) => ({
+const useStyles = makeStyles(({ breakpoints }) => ({
   cardWrapper: {
     height: cardStyleVars.cardHeight,
     width: cardStyleVars.cardWidth,
@@ -21,28 +21,6 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     cursor: 'pointer',
     height: '100%'
   },
-
-  readMoreGradientWrapper: {
-    zIndex: 1,
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    minHeight: 50,
-    marginTop: 'auto',
-    width: '100%',
-    background: `linear-gradient(transparent 3px, ${palette.background.paper} 27px)`,
-
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-  },
-
-  readMoreText: {
-    fontWeight: 700,
-    color: 'gray',
-    textShadow: '0 0 1px white',
-    textTransform: 'uppercase',
-  }
 }))
 
 export default useStyles

@@ -1,8 +1,9 @@
 import {
   Card as CardContainer,
-  CardContent, Typography
+  CardContent
 } from '@material-ui/core'
 import React, { forwardRef, memo, useState } from 'react'
+import CardDescriptionReadMore from './CardDescriptionReadMore'
 import CardMediaThumbnail from './CardMediaThumbnail'
 import CharacterDescription from './CharacterDescription'
 import CharacterName from './CharacterName'
@@ -31,9 +32,7 @@ const Card = forwardRef<Element, ICardProps>((
 
   const {
     cardWrapper,
-    textContentWrapper,
-    readMoreGradientWrapper,
-    readMoreText
+    textContentWrapper, 
   } = useStyles()
 
   return (
@@ -63,21 +62,7 @@ const Card = forwardRef<Element, ICardProps>((
             characterDescription={characterDescription}
           />
 
-          <div className={readMoreGradientWrapper}>
-            <Typography
-              variant="caption"
-              component="p"
-              className={readMoreText}
-            >
-              {
-                cardIsFocused
-                  ?
-                  'click to close full read'
-                  :
-                  'Click to full read'
-              }
-            </Typography>
-          </div>
+          <CardDescriptionReadMore cardIsFocused={cardIsFocused} />
         </CardContent>
       </CardContainer>
     </>
