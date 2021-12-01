@@ -1,7 +1,7 @@
 import { Typography, useMediaQuery, useTheme } from '@material-ui/core'
 import React from 'react'
 import ReturnPageButton from '../../parts/GLOBAL/Hero/ReturnPageButton'
-import { useStyles } from './styles'
+import useStyles from './styles'
 import { HeroProps } from './types'
 
 export default function Hero({

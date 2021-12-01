@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import wallpaper from '../../assets/images/wallpaper.avif'
 import { symmetricSideMarginStyleVar } from "../../styles/globalStyleVariables";
 
-export const useStyles = makeStyles({
+const useStyles = makeStyles({
   HeroContainer: {
     height: '76vh',
     backgroundImage: `url(${wallpaper})`,
@@ -39,3 +39,5 @@ export const useStyles = makeStyles({
     textAlign: 'left'
   }
 })
+
+export default useStyles
