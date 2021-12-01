@@ -29,13 +29,6 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 20,
-  },
-
-  menuItemContainer: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    gap: 5
   }
 }))
 
