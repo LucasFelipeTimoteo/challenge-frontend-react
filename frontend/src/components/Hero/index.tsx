@@ -1,5 +1,6 @@
-import { Typography, useMediaQuery, useTheme } from '@material-ui/core'
+import { useMediaQuery, useTheme } from '@material-ui/core'
 import React from 'react'
+import PagePresentationText from '../../parts/GLOBAL/Hero/PagePresentationText'
 import ReturnPageButton from '../../parts/GLOBAL/Hero/ReturnPageButton'
 import useStyles from './styles'
 import { HeroProps } from './types'
@@ -18,7 +19,6 @@ export default function Hero({
     teamPageHeroContainer,
     heroContentContainer,
     characterPageHeroContentContainer,
-    heroText,
   } = useStyles()
 
   return (
@@ -38,15 +38,11 @@ export default function Hero({
           )
         }
 
-        <Typography
-          variant="h1"
-          component="h2"
-          className={heroText}
-        >
-          {charactersPage && 'Explore the most powerful chacters in Marvel'}
-          {characterPage && 'Discover all comics this character took part in'}
-          {teamPage && 'Here is your own strike team choice'}
-        </Typography>
+        <PagePresentationText
+          characterPage={characterPage}
+          charactersPage={charactersPage}
+          teamPage={teamPage}
+        />
 
         {children}
       </div>

@@ -29,14 +29,6 @@ const useStyles = makeStyles({
     justifyContent: 'flex-end',
     height: '105%',
     marginTop: 120
-  },
-
-  heroText: {
-    marginBottom: 'clamp(25px, 5vw, 50px)',
-    color: 'whitesmoke',
-    fontWeight: 700,
-    width: '70%',
-    textAlign: 'left'
   }
 })
 
