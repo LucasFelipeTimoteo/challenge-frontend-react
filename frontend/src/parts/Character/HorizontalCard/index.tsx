@@ -1,16 +1,15 @@
 import {
   Card as CardContainer,
-  CardContent,
-  CardMedia,
-  Typography,
+  CardContent, Typography,
   useMediaQuery,
   useTheme
 } from '@material-ui/core'
 import React, { forwardRef } from 'react'
 import { useSeletedCharacter } from '../../../contexts/selectedCharacter/hooks/useSelectedCharacterProvider'
 import useCardImageFocused from '../../../hooks/useCardImageFocused'
-import HorizontalCardPhotoViwer from './HorizontalCardPhotoViwer'
 import ComicInfo from './ComicInfo'
+import HorizontalCardMedia from './HorizontalCardMedia'
+import HorizontalCardPhotoViwer from './HorizontalCardPhotoViwer'
 import useStyles from './styles'
 import { IHorizontalCardProps } from './types'
 
@@ -37,9 +36,6 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
   const {
     horizontalCardContainer,
     horizontalCardInfo,
-    horizontalCardMedia,
-    comicPageHorizontalCardMedia,
-    focusedHorizontalCardMedia,
     comicHorizontalCardInfo,
     horizontalCardDescription
   } = useStyles()
@@ -48,29 +44,18 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
     return null
   }
 
-  const headerCharacterPath =
-    'id' in selectedCharacter &&
-    `${selectedCharacter.thumbnail.path}.${selectedCharacter.thumbnail.extension}`
-
-
-  const currentImage =
-    comic
-      ? `${comicThumbnailPath}.${comicThumbnailExtension}`
-      : headerCharacterPath
-
   return (
     <CardContainer
       className={horizontalCardContainer}
       ref={lastVisibleHorizontalCard && !inView ? ref : null}
     >
-      <CardMedia
-        image={currentImage || '/'}
-        className={
-          `${horizontalCardMedia}
-           ${comic && comicPageHorizontalCardMedia}
-           ${cardImageFocused && focusedHorizontalCardMedia}`
-        }
-        onClick={toggleCardImageFocused}
+      <HorizontalCardMedia
+        cardImageFocused={cardImageFocused}
+        comicThumbnailExtension={comicThumbnailExtension}
+        comicThumbnailPath={comicThumbnailPath}
+        selectedCharacter={selectedCharacter}
+        toggleCardImageFocused={toggleCardImageFocused}
+        comic={comic}
       />
 
       <CardContent className={
