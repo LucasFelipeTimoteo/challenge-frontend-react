@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import useHeaderMenu from '../../hooks/useHeaderMenu'
 import JoinTeamButton from '../../parts/GLOBAL/Header/JoinTeamButton'
 import Logo from '../../parts/GLOBAL/Header/Logo'
+import PageLogo from '../../parts/GLOBAL/Header/PageLogo'
 import ToggleThemeButton from '../../parts/GLOBAL/ToggleThemeButton'
 import { useMUITheme } from '../../styles/themes/MUITheme'
 import useStyles from './styles'
@@ -23,8 +24,6 @@ export default function Header({ teamPage }: HeaderProps) {
   const {
     appBar,
     headerContainer,
-    headerMainInformationLink,
-    title,
     headerButtonsContainer,
     hamburguerMenuIcon,
     menuItemContainer
@@ -33,17 +32,7 @@ export default function Header({ teamPage }: HeaderProps) {
   return (
     <AppBar position="static" className={appBar}>
       <Toolbar className={headerContainer}>
-
-        <Link
-          to="/"
-          title="Click to go to homepage"
-          className={headerMainInformationLink}
-        >
-          {query && <Logo />}
-          <Typography variant="h1" className={title}>
-            Marvel Strike Team
-          </Typography>
-        </Link>
+        <PageLogo query={query} />
 
         {
           query && (
