@@ -23,33 +23,12 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     }
   },
 
-  headerMainInformationLink: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 10,
-    textDecoration: 'none',
-    color: 'inherit'
-  },
-
-  title: {
-    fontWeight: 700
-  },
-
   headerButtonsContainer: {
     marginLeft: 'auto',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     gap: 20,
-  },
-
-  hamburguerMenuIcon: {
-    marginLeft: 'auto',
-    color: 'whitesmoke',
-
-    [breakpoints.down(breakpoints.values.sm)]: {
-      marginLeft: 0
-    }
   },
 
   menuItemContainer: {

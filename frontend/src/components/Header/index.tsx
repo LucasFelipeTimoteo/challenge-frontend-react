@@ -1,14 +1,14 @@
 import {
-  AppBar, IconButton, Menu,
-  MenuItem, Toolbar,
-  Typography, useMediaQuery, useTheme
+  AppBar, Menu,
+  MenuItem,
+  Toolbar, useMediaQuery,
+  useTheme
 } from '@material-ui/core'
-import { Close, Menu as MenuIcon } from '@material-ui/icons'
+import { Close } from '@material-ui/icons'
 import React from 'react'
-import { Link } from 'react-router-dom'
 import useHeaderMenu from '../../hooks/useHeaderMenu'
+import HamburguerMenuButton from '../../parts/GLOBAL/Header/HamburguerMenuButton'
 import JoinTeamButton from '../../parts/GLOBAL/Header/JoinTeamButton'
-import Logo from '../../parts/GLOBAL/Header/Logo'
 import PageLogo from '../../parts/GLOBAL/Header/PageLogo'
 import ToggleThemeButton from '../../parts/GLOBAL/ToggleThemeButton'
 import { useMUITheme } from '../../styles/themes/MUITheme'
@@ -25,7 +25,6 @@ export default function Header({ teamPage }: HeaderProps) {
     appBar,
     headerContainer,
     headerButtonsContainer,
-    hamburguerMenuIcon,
     menuItemContainer
   } = useStyles()
 
@@ -44,14 +43,7 @@ export default function Header({ teamPage }: HeaderProps) {
         }
 
         {!query && (
-          <IconButton
-            onClick={handleMenu}
-            className={hamburguerMenuIcon}
-            aria-controls={open ? 'menu-list-grow' : undefined}
-            aria-haspopup="true"
-          >
-            <MenuIcon fontSize="large" />
-          </IconButton>
+          <HamburguerMenuButton open={open} handleMenu={handleMenu} />
         )}
 
         {!query && (
