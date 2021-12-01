@@ -9,6 +9,7 @@ import { useSeletedCharacter } from '../../../contexts/selectedCharacter/hooks/u
 import useCardImageFocused from '../../../hooks/useCardImageFocused'
 import ComicInfo from './ComicInfo'
 import HorizontalCardMedia from './HorizontalCardMedia'
+import HorizontalCardName from './HorizontalCardName'
 import HorizontalCardPhotoViwer from './HorizontalCardPhotoViwer'
 import useStyles from './styles'
 import { IHorizontalCardProps } from './types'
@@ -62,9 +63,11 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
         `${horizontalCardInfo}
          ${comic && comicHorizontalCardInfo}`
       }>
-        <Typography variant="h2">
-          {comic ? comicName : selectedCharacter.name}
-        </Typography>
+        <HorizontalCardName
+          comic={comic}
+          comicName={comicName}
+          selectedCharacter={selectedCharacter}
+        />
 
         {
           comic && (
