@@ -3,6 +3,7 @@ import {
   CardContent
 } from '@material-ui/core'
 import React, { forwardRef, memo, useState } from 'react'
+import useCardIsFocused from '../../../hooks/useCardIsFocused'
 import CardDescriptionReadMore from './CardDescriptionReadMore'
 import CardMediaThumbnail from './CardMediaThumbnail'
 import CharacterDescription from './CharacterDescription'
@@ -24,15 +25,11 @@ const Card = forwardRef<Element, ICardProps>((
   },
   ref
 ) => {
-  const [cardIsFocused, setCardIsFocused] = useState(false)
-
-  const toggleCardIsFocused = () => {
-    setCardIsFocused(prev => !prev)
-  }
+  const { cardIsFocused, toggleCardIsFocused } = useCardIsFocused()
 
   const {
     cardWrapper,
-    textContentWrapper, 
+    textContentWrapper,
   } = useStyles()
 
   return (
