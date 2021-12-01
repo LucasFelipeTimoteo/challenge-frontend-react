@@ -1,6 +1,6 @@
 import {
   Card as CardContainer,
-  CardContent, Typography,
+  CardContent, 
   useMediaQuery,
   useTheme
 } from '@material-ui/core'
@@ -8,6 +8,7 @@ import React, { forwardRef } from 'react'
 import { useSeletedCharacter } from '../../../contexts/selectedCharacter/hooks/useSelectedCharacterProvider'
 import useCardImageFocused from '../../../hooks/useCardImageFocused'
 import ComicInfo from './ComicInfo'
+import HorizontalCardDescription from './HorizontalCardDescription'
 import HorizontalCardMedia from './HorizontalCardMedia'
 import HorizontalCardName from './HorizontalCardName'
 import HorizontalCardPhotoViwer from './HorizontalCardPhotoViwer'
@@ -38,7 +39,6 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
     horizontalCardContainer,
     horizontalCardInfo,
     comicHorizontalCardInfo,
-    horizontalCardDescription
   } = useStyles()
 
   if (loadingSelectedCharacter && !('id' in selectedCharacter)) {
@@ -79,13 +79,11 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
           )
         }
 
-        <Typography
-          title={comicDescription || 'Description not provided'}
-          variant="body2"
-          className={horizontalCardDescription}
-        >
-          {(comic ? comicDescription : selectedCharacter.description) || 'Description not provided'}
-        </Typography>
+        <HorizontalCardDescription
+          comic={comic}
+          selectedCharacter={selectedCharacter}
+          comicDescription={comicDescription}
+        />
 
       </CardContent>
       <HorizontalCardPhotoViwer

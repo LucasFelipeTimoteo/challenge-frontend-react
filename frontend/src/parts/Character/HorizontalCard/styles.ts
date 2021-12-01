@@ -38,11 +38,6 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     }
   },
 
-  horizontalCardDescription: {
-    paddingBottom: 50,
-    marginRight: 8
-  },
-
   comicHorizontalCardInfo: {
     gap: 8
   }
