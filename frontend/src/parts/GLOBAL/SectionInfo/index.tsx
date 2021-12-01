@@ -1,5 +1,5 @@
-import { FormControlLabel, Switch } from '@material-ui/core'
 import React from 'react'
+import LoadMoreSwitch from './parts/LoadMoreSwitch'
 import SectionResults from './parts/SectionResults'
 import SectionTitle from './parts/SectionTitle'
 import useStyles from './styles'
@@ -20,7 +20,6 @@ export default function SectionInfo({
   const {
     characterPageSectionInfoContainer,
     sectionInfoContainer,
-    loadMoredataSwitchLabel
   } = useStyles()
 
   return (
@@ -34,19 +33,9 @@ export default function SectionInfo({
       />
 
       {(!searchKey && charactersPage) && (
-        <FormControlLabel
-          className={loadMoredataSwitchLabel}
-          label="Load more"
-          title={`Click to ${loadMoreData ? 'disable' : 'activate'} more data load`}
-          control={
-            <Switch
-              size="medium"
-              color="primary"
-              name="load more"
-              checked={loadMoreData}
-              onChange={toggleLoadMoreData}
-            />
-          }
+        <LoadMoreSwitch
+          loadMoreData={loadMoreData}
+          toggleLoadMoreData={toggleLoadMoreData}
         />
       )}
 

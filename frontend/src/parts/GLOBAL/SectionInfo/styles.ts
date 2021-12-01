@@ -17,14 +17,6 @@ const useStyles = makeStyles(({ breakpoints }) => ({
 
   characterPageSectionInfoContainer: {
     margin: `100px ${symmetricSideMarginStyleVar} 34px`
-  },
-
-  loadMoredataSwitchLabel: {
-    margin: 0,
-
-    [breakpoints.down(breakpoints.values.md)]: {
-      order: 1
-    }
   }
 }))
 
