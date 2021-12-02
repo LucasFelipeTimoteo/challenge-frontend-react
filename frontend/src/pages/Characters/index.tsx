@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import CharactersList from '../../components/CharactersList'
 import Header from '../../components/Header'

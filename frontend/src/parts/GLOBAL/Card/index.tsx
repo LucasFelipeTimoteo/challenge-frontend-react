@@ -2,7 +2,7 @@ import {
   Card as CardContainer,
   CardContent
 } from '@material-ui/core'
-import React, { forwardRef, memo, useState } from 'react'
+import React, { forwardRef, memo } from 'react'
 import useCardIsFocused from '../../../hooks/useCardIsFocused'
 import CardDescriptionReadMore from './CardDescriptionReadMore'
 import CardMediaThumbnail from './CardMediaThumbnail'
