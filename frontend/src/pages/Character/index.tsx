@@ -8,6 +8,7 @@ import useCharacterComics from '../../hooks/useCharacterComics'
 import HorizontalCard from '../../parts/Character/HorizontalCard'
 import Loading from '../../parts/GLOBAL/Loading'
 import SectionInfo from '../../parts/GLOBAL/SectionInfo'
+import isLoading from './utils/isLoading'
 
 export default function Character() {
   const { selectedCharacter, loadingSelectedCharacter } = useSeletedCharacter()
@@ -20,8 +21,10 @@ export default function Character() {
     resultsFound
   } = useCharacterComics(selectedCharacter.id, inView)
 
-  const loadingCondition = (
-    (loadingCharacterComics || loadingSelectedCharacter) && resultsFound
+  const loadingCondition = isLoading(
+    loadingCharacterComics,
+    loadingSelectedCharacter,
+    resultsFound
   )
 
   return (
