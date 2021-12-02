@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Typography } from '@material-ui/core'
 import useStyles from './styles'
 import { SectionTitleProps } from './type'
@@ -15,7 +15,7 @@ const sectionTitleDescriptionTitle = (
   }
 }
 
-export default function SectionTitle({
+function SectionTitle({
   characterPage,
   charactersPage
 }: SectionTitleProps) {
@@ -33,3 +33,5 @@ export default function SectionTitle({
     </Typography>
   )
 }
+
+export default memo(SectionTitle)
