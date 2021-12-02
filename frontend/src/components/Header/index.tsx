@@ -1,8 +1,10 @@
 import {
-  AppBar, Toolbar, useMediaQuery,
+  AppBar,
+  Toolbar,
+  useMediaQuery,
   useTheme
 } from '@material-ui/core'
-import React from 'react'
+import React, { memo } from 'react'
 import useHeaderMenu from '../../hooks/useHeaderMenu'
 import HamburguerMenu from '../../parts/GLOBAL/Header/HamburguerMenu'
 import HamburguerMenuButton from '../../parts/GLOBAL/Header/HamburguerMenuButton'
@@ -12,7 +14,7 @@ import ToggleThemeButton from '../../parts/GLOBAL/ToggleThemeButton'
 import useStyles from './styles'
 import { HeaderProps } from './types'
 
-export default function Header({ teamPage }: HeaderProps) {
+function Header({ teamPage }: HeaderProps) {
   const { anchorEl, handleClose, handleMenu, open } = useHeaderMenu()
   const { breakpoints } = useTheme()
   const query = useMediaQuery(`(min-width:${breakpoints.values.md}px)`)
@@ -53,3 +55,5 @@ export default function Header({ teamPage }: HeaderProps) {
     </AppBar>
   )
 }
+
+export default memo(Header)
