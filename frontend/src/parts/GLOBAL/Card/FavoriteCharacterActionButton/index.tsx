@@ -1,6 +1,6 @@
 import { IconButton } from '@material-ui/core'
 import { DeleteForever, People } from '@material-ui/icons'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useFavoriteCharactersProvider } from '../../../../contexts/favoriteCharacters/hooks/useFavoriteCharactersProvider'
 import useStyles from './styles'
 import { IFavoriteCharacterActionButtonProps } from './types'
@@ -23,21 +23,22 @@ export default function FavoriteCharacterActionButton({
   const handleAddFavoriteCharacter = () => {
     addFavoriteCharacter(character)
   }
-
-  //optimizar usando useCallback
-  const characterIsFavorited = favoriteCharacters.some(favoritedCharacter => (
-    favoritedCharacter.id === characterId
-  ))
+   
+  const characterIsFavorited = useCallback(() => (
+    favoriteCharacters.some(favoritedCharacter => (
+      favoritedCharacter.id === characterId
+    ))
+  ), [favoriteCharacters, characterId])
 
   return (
     <IconButton
       title={
-        characterIsFavorited ? "Disfavor character" : "Add character to favorites"
+        characterIsFavorited() ? "Disfavor character" : "Add character to favorites"
       }
-      onClick={characterIsFavorited ? handleRemoveFavoriteCharacter : handleAddFavoriteCharacter}
-      className={characterIsFavorited ? disfavorButton : addFavoritesButton}
+      onClick={characterIsFavorited() ? handleRemoveFavoriteCharacter : handleAddFavoriteCharacter}
+      className={characterIsFavorited() ? disfavorButton : addFavoritesButton}
     >
-      {characterIsFavorited ? <DeleteForever /> : <People />}
+      {characterIsFavorited() ? <DeleteForever /> : <People />}
     </IconButton>
   )
 }
