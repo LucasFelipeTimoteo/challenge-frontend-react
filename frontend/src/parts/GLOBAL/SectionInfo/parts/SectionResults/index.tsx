@@ -1,9 +1,9 @@
-import React from 'react'
 import { Typography } from '@material-ui/core'
+import React, { memo } from 'react'
 import useStyles from './styles'
 import { ISectionResultsProps } from './types'
 
-export default function SectionResults({
+function SectionResults({
   totalSearchResults,
   charactersCount,
   searchResultsNotFound,
@@ -30,3 +30,5 @@ export default function SectionResults({
     </Typography>
   )
 }
+
+export default memo(SectionResults)
