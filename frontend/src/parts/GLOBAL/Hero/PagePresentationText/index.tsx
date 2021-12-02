@@ -1,9 +1,9 @@
 import { Typography } from '@material-ui/core'
-import React from 'react'
+import React, { memo } from 'react'
 import useStyles from './styles'
 import { IPagePresentationTextProps } from './types'
 
-export default function PagePresentationText({
+function PagePresentationText({
   charactersPage,
   characterPage,
   teamPage
@@ -26,3 +26,5 @@ export default function PagePresentationText({
     </Typography>
   )
 }
+
+export default memo(PagePresentationText)
