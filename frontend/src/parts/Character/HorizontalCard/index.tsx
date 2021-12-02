@@ -87,7 +87,7 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
 
       </CardContent>
       <HorizontalCardPhotoViwer
-        comic={comic || false}
+        comic={comic}
         cardImageFocused={cardImageFocused}
         toggleCardImageFocused={toggleCardImageFocused}
         query={query}
