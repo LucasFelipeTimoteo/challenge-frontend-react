@@ -7,6 +7,7 @@ import getStorageCharacters from './utils/getStorageCharacters'
 import getStorageCharactersResultsNumber from "./utils/getStorageCharactersResultsNumber"
 import setLocalStorageData from "../../utils/setListToLocalStorage"
 import handleOffset from "../utils/handleOffset"
+import validateAPIResponse from "../utils/errors/validateAPIResponse"
 
 export default function useCharacters(
   inView: boolean,
@@ -50,9 +51,10 @@ export default function useCharacters(
         const apiRequest = await api('characters')
 
         const response = apiRequest.data
+        validateAPIResponse(response)
+
         const resultsNumber = response.data.total
         const characterList = response.data.results
-
 
         if (!charactersListTypeGuard(characterList)) {
           throw new Error('API response does not have correct type')

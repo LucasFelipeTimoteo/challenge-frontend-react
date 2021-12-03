@@ -2,6 +2,7 @@ import md5 from "md5";
 import { useEffect, useState } from "react";
 import marvelComicsApi from "../../services/api/marvelComicsApi";
 import setLocalStorageData from "../../utils/setListToLocalStorage";
+import validateAPIResponse from "../utils/errors/validateAPIResponse";
 import getEnvVariables from "../utils/getEnvVariables";
 import handleOffset from "../utils/handleOffset";
 import { ICharacterComics } from "./types";
@@ -49,6 +50,8 @@ export default function useCharacterComics(characterId: number, inView: boolean)
         const apiRequest = await api('comics')
 
         const response = apiRequest.data
+        validateAPIResponse(response)
+
         const comicsResultsNumber = response.data.total
         const characterComicsList = response.data.results
 
