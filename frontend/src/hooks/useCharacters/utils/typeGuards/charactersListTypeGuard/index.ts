@@ -5,7 +5,7 @@ const charactersListTypeGuard = (storageList: any): storageList is ICharacter[] 
     return false
   }
 
-  if (!(typeof storageList[0] === 'object' && storageList[0] !== null)) {
+  if (typeof storageList[0] !== 'object' && storageList[0] === null) {
     return false
   }
   
