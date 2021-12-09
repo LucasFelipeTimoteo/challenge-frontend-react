@@ -9,9 +9,11 @@ import HorizontalCard from '../../parts/Character/HorizontalCard'
 import Loading from '../../parts/GLOBAL/Loading'
 import SectionInfo from '../../parts/GLOBAL/SectionInfo'
 import isLoading from './utils/isLoading'
+import useLoadMoreData from '../../hooks/useLoadMoreData'
 
 export default function Character() {
   const { selectedCharacter, loadingSelectedCharacter } = useSeletedCharacter()
+  const { loadMoreData, toggleLoadMoreData } = useLoadMoreData()
   const { inView, ref } = useInView()
 
   const {
@@ -19,7 +21,7 @@ export default function Character() {
     characterComicsResultsNumber,
     loadingCharacterComics,
     resultsFound
-  } = useCharacterComics(selectedCharacter.id, inView)
+  } = useCharacterComics(selectedCharacter.id, inView, loadMoreData)
 
   const loadingCondition = isLoading(
     loadingCharacterComics,
@@ -33,7 +35,12 @@ export default function Character() {
       <Hero characterPage>
         <HorizontalCard />
       </Hero>
-      <SectionInfo characterPage characterComicsResultsNumber={characterComicsResultsNumber} />
+      <SectionInfo
+        characterPage
+        characterComicsResultsNumber={characterComicsResultsNumber}
+        loadMoreData={loadMoreData}
+        toggleLoadMoreData={toggleLoadMoreData}
+      />
       <CharacterInfo
         characterComics={characterComics}
         inView={inView}

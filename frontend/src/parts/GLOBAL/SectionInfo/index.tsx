@@ -32,7 +32,7 @@ export default function SectionInfo({
         charactersPage={charactersPage}
       />
 
-      {(!searchKey && charactersPage) && (
+      {!searchKey && (
         <LoadMoreSwitch
           loadMoreData={loadMoreData}
           toggleLoadMoreData={toggleLoadMoreData}

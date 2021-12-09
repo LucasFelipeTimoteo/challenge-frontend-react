@@ -10,7 +10,11 @@ import getStorageCharacterComics from "./utils/getStorageCharacterComics";
 import getStorageCharacterComicsResultsNumber from "./utils/getStorageCharacterComicsResultsNumber";
 import characterComicsTypeGuard from "./utils/typeGuards/characterComicsTypeGuard";
 
-export default function useCharacterComics(characterId: number, inView: boolean) {
+export default function useCharacterComics(
+  characterId: number,
+  inView: boolean,
+  loadMoreData: boolean
+) {
   const characterComicsDefaultValue = getStorageCharacterComics(characterId)
   const characterComicsResultsNumberDefaultValue = getStorageCharacterComicsResultsNumber(characterId)
 
@@ -24,7 +28,7 @@ export default function useCharacterComics(characterId: number, inView: boolean)
     resultsFound
   )
   const normalFetchCondition = (
-    (characterId && inView && !loadingCharacterComics) &&
+    (characterId && inView && !loadingCharacterComics && loadMoreData) &&
     resultsFound
   )
 
@@ -84,7 +88,12 @@ export default function useCharacterComics(characterId: number, inView: boolean)
     if (firstRenderFetchCondition || normalFetchCondition) {
       getCharacterComic()
     }
-  }, [characterId, firstRenderFetchCondition, normalFetchCondition, characterComics])
+  }, [
+    characterId,
+    firstRenderFetchCondition,
+    normalFetchCondition,
+    characterComics
+  ])
 
   return {
     characterComics,
