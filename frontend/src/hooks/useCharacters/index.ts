@@ -83,10 +83,6 @@ export default function useCharacters(
 
   }, [
     characters,
-    loadingCharacters,
-    inView,
-    loadMoreData,
-    searchKey,
     normalFetchCondition,
     firstRenderFetchCondition
   ])
