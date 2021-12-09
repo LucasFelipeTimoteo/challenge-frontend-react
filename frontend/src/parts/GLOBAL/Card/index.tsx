@@ -1,13 +1,7 @@
-import {
-  Card as CardContainer,
-  CardContent
-} from '@material-ui/core'
+import { Card as CardContainer } from '@material-ui/core'
 import React, { forwardRef, memo } from 'react'
-import useCardIsFocused from '../../../hooks/useCardIsFocused'
-import CardDescriptionReadMore from './CardDescriptionReadMore'
 import CardMediaThumbnail from './CardMediaThumbnail'
-import CharacterDescription from './CharacterDescription'
-import CharacterName from './CharacterName'
+import CardTextContent from './CardTextContent'
 import FavoriteCharacterActionButton from './FavoriteCharacterActionButton'
 import useStyles from './styles'
 import { ICardProps } from './types'
@@ -25,12 +19,8 @@ const Card = forwardRef<Element, ICardProps>((
   },
   ref
 ) => {
-  const { cardIsFocused, toggleCardIsFocused } = useCardIsFocused()
 
-  const {
-    cardWrapper,
-    textContentWrapper,
-  } = useStyles()
+  const { cardWrapper } = useStyles()
 
   return (
     <>
@@ -51,16 +41,11 @@ const Card = forwardRef<Element, ICardProps>((
           character={character}
           characterId={characterId}
         />
+        <CardTextContent
+          characterName={characterName}
+          characterDescription={characterDescription}
+        />
 
-        <CardContent className={textContentWrapper} onClick={toggleCardIsFocused}>
-          <CharacterName characterName={characterName} />
-          <CharacterDescription
-            cardIsFocused={cardIsFocused}
-            characterDescription={characterDescription}
-          />
-
-          <CardDescriptionReadMore cardIsFocused={cardIsFocused} />
-        </CardContent>
       </CardContainer>
     </>
   )

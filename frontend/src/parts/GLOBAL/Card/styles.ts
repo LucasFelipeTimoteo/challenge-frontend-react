@@ -14,13 +14,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     [breakpoints.down(breakpoints.values.xs)]: {
       width: `calc(${cardStyleVars.cardWidth}px - 16px)`
     }
-  },
-
-  textContentWrapper: {
-    textAlign: 'left',
-    cursor: 'pointer',
-    height: '100%'
-  },
+  }
 }))
 
 export default useStyles
