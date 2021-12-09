@@ -16,9 +16,10 @@ const useStyles = makeStyles(({ palette }) => ({
     textTransform: 'uppercase',
     textDecoration: 'none',
     paddingBottom: 10,
-    zIndex: 2,
+    zIndex: 4,
     color: 'gray',
-    textShadow: '0 0 1px white'
+    textShadow: '0 0 1px white',
+    padding: 25
   }
 }))
 

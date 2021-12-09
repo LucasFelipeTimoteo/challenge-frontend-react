@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     gap: 'clamp(1px, 3vw, 50px)',
 
     [breakpoints.down(breakpoints.values.sm)]: {
-      height: 400,
+      minHeight: 400,
       alignItems: 'flex-start',
       marginTop: 40,
     }
