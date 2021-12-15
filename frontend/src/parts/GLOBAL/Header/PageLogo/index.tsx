@@ -13,6 +13,7 @@ export default function PageLogo({ query }: IPageLogoProps) {
       to="/"
       title="Click to go to homepage"
       className={headerMainInformationLink}
+      data-testid="pageLogo"
     >
       {query && <Logo />}
 

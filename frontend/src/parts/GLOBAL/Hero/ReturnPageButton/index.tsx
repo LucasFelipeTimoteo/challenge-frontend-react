@@ -12,6 +12,7 @@ export default function ReturnPageButton() {
     <div
       className={returnToPreviousPageButtonWrapper}
       onClick={goBack}
+      data-testid="returnButton"
     >
       <Typography>
         Return to previous page

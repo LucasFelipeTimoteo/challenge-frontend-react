@@ -27,6 +27,7 @@ export default function JoinTeamButton() {
       endIcon={<People />}
       title="Go to your selected characters page"
       onClick={goToTeamPage}
+      data-testid="teamButton"
     >
       <Typography
         variant={query ? 'h6' : 'body2'}
