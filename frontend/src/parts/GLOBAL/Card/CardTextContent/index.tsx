@@ -15,7 +15,11 @@ export default function CardTextContent({
   const { textContentWrapper } = useStyles()
 
   return (
-    <CardContent className={textContentWrapper} onClick={toggleCardIsFocused}>
+    <CardContent
+      className={textContentWrapper}
+      onClick={toggleCardIsFocused}
+      data-testid="cardText"
+    >
       <CharacterName characterName={characterName} />
       <CharacterDescription
         cardIsFocused={cardIsFocused}
