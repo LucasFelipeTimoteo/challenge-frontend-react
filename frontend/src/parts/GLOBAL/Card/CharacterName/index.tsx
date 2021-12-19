@@ -15,6 +15,7 @@ export default function CharacterName({
       component="p"
       title={`The character name is ${characterName}`}
       className={cardTitle}
+      data-testid="characterName"
     >
       {characterName || altCharacterName}
     </Typography>

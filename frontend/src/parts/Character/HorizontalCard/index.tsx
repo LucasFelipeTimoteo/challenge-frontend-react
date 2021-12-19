@@ -49,6 +49,7 @@ const HorizontalCard = forwardRef<Element, IHorizontalCardProps>((
     <CardContainer
       className={horizontalCardContainer}
       ref={lastVisibleHorizontalCard && !inView ? ref : null}
+      data-testid="horizontalCard"
     >
       <HorizontalCardMedia
         cardImageFocused={cardImageFocused}

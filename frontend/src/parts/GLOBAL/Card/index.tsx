@@ -27,6 +27,8 @@ const Card = forwardRef<Element, ICardProps>((
       <CardContainer
         className={cardWrapper}
         ref={lastVisibleCharacter && !inView ? ref : null}
+        role="figure"
+        data-testid="card"
       >
 
         <CardMediaThumbnail

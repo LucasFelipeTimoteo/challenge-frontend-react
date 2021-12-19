@@ -20,7 +20,7 @@ export default function ComicInfo({
   } = useStyles()
 
   return (
-    <div>
+    <div data-testid="comicInfo">
       <div className={comicInfo}>
         <div
           className={comicDateInfo}

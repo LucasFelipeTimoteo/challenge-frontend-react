@@ -23,7 +23,7 @@ export default function FavoriteCharacterActionButton({
   const handleAddFavoriteCharacter = () => {
     addFavoriteCharacter(character)
   }
-   
+
   const characterIsFavorited = useCallback(() => (
     favoriteCharacters.some(favoritedCharacter => (
       favoritedCharacter.id === characterId
@@ -35,10 +35,21 @@ export default function FavoriteCharacterActionButton({
       title={
         characterIsFavorited() ? "Disfavor character" : "Add character to favorites"
       }
-      onClick={characterIsFavorited() ? handleRemoveFavoriteCharacter : handleAddFavoriteCharacter}
+      onClick={
+        characterIsFavorited() ?
+          handleRemoveFavoriteCharacter :
+          handleAddFavoriteCharacter
+      }
       className={characterIsFavorited() ? disfavorButton : addFavoritesButton}
+      data-testid="favoriteCharacterActionButton"
     >
-      {characterIsFavorited() ? <DeleteForever /> : <People />}
+
+      {
+        characterIsFavorited() ?
+          <DeleteForever data-testid="deleteOfFavorites" /> :
+          <People data-testid="addToFavorites" />
+      }
+
     </IconButton>
   )
 }

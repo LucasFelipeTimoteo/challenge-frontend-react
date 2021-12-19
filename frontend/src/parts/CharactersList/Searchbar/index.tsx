@@ -27,12 +27,14 @@ export default function Searchbar({
         className={searchbarInputWrapper}
         onChange={handleSearchValue}
         value={searchValue}
+        data-testid="searchbar"
       />
 
       <IconButton
         aria-label="search"
         className={searchbarButton}
         onClick={handleSearchKey}
+        data-testid="searchbarSearchButton"
       >
         <Search titleAccess="Click to start search" />
       </IconButton>

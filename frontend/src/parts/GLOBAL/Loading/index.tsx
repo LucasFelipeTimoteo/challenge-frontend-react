@@ -6,7 +6,7 @@ export default function Loading() {
   const { loadingContainer } = useStyles()
 
   return (
-    <div className={loadingContainer}>
+    <div className={loadingContainer} data-testid="loading">
       <Typography variant="h2" component="h3">
         LOADING...
       </Typography>

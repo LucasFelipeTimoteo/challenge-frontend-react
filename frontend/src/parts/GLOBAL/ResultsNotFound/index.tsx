@@ -6,7 +6,7 @@ export default function ResultsNotFound() {
   const { resultsNotFoundContainer } = useStyles()
 
   return (
-    <div className={resultsNotFoundContainer}>
+    <div className={resultsNotFoundContainer} data-testid="resultsNotFound">
       <Typography variant="h2" component="h3">
         Results not found
       </Typography>

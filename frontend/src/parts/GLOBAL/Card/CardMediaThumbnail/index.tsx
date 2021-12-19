@@ -32,6 +32,7 @@ export default function CardMediaThumbnail({
       className={cardMedia}
       image={imagePath}
       onClick={handleCardMediaClick}
+      data-testid="cardMediaThumbnail"
     >
       <Typography
         variant="subtitle2"

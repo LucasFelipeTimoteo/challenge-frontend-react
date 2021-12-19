@@ -14,6 +14,7 @@ export default function LoadMoreSwitch({
       className={loadMoredataSwitchLabel}
       label="Load more"
       title={`Click to ${loadMoreData ? 'disable' : 'activate'} more data load`}
+      data-testid="loadMoreSwitch"
       control={
         <Switch
           size="medium"
