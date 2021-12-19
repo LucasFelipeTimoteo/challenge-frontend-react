@@ -20,16 +20,18 @@ export default function CardMediaThumbnail({
     history.push(`character/${characterId}/comics`)
   }
 
+  const handleCardMediaClick = () => {
+    handleSelectedCharacter(character)
+    goToCharacterInfoPage()
+  }
+
   const imagePath = `${characterThumbnail}.${characterThumbnailExtension}`
 
   return (
     <CardMedia
       className={cardMedia}
       image={imagePath}
-      onClick={() => {
-        handleSelectedCharacter(character)
-        goToCharacterInfoPage()
-      }}
+      onClick={handleCardMediaClick}
     >
       <Typography
         variant="subtitle2"
@@ -42,5 +44,4 @@ export default function CardMediaThumbnail({
     </CardMedia>
 
   )
-
 }
