@@ -5,7 +5,7 @@ const characterComicsTypeGuard = (characterComicsList: any): characterComicsList
     return false
   }
 
-  if (typeof characterComicsList[0] !== 'object' && characterComicsList[0] === null) {
+  if (typeof characterComicsList[0] !== 'object' || characterComicsList[0] === null) {
     return false
   }
 
