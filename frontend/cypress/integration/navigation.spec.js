@@ -3,7 +3,7 @@
 describe('Navigate between pages', () => {
   it('Navigate between all pages options in header', () => {
     cy.visit("/")
-    cy.intercept('GET', '**/characters*', { fixture: 'charactersMock.json' })
+    cy.interceptMarvelAPI('characters')
 
     cy.get('[data-testid="teamButton"]').as('teamButton').click()
     cy.location('pathname').should('eq', '/team')
@@ -18,22 +18,12 @@ describe('Navigate between pages', () => {
   })
 
   it('Navigate to selected character page', () => {
+    cy.interceptMarvelAPI('characters')
     cy.visit('/')
-    cy.intercept('GET', '**/characters*', { fixture: 'charactersMock.json' })
 
+    cy.interceptMarvelAPI('comics').as('comicsList')
     cy.get('[data-testid="cardMediaThumbnail"]').first().click()
 
-    cy.intercept('GET', '**/comics*', { fixture: 'comicsMock.json' })
     cy.location('pathname').should('match', /\/character\/\d+\/comics/)
-  })
-
-  it('navigate to comics page without select a character', () => {
-    cy.visit('/character/1010354/comics')
-    cy.intercept('GET', '**/comics*', { fixture: 'comicsMock.json' })
-
-    cy.intercept(
-      { method: 'GET', pathname: /\/characters\/\d+/ },
-      { fixture: 'selectedCharacterMock.json' }
-    )
   })
 })
