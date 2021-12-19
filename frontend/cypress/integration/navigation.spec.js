@@ -18,11 +18,13 @@ describe('Navigate between pages', () => {
   })
 
   it('Navigate to selected character page', () => {
-    cy.interceptMarvelAPI('characters')
+    cy.interceptMarvelAPI('characters').as('charactersList')
     cy.visit('/')
+    cy.wait('@charactersList')
 
     cy.interceptMarvelAPI('comics').as('comicsList')
     cy.get('[data-testid="cardMediaThumbnail"]').first().click()
+    cy.wait('@comicsList')
 
     cy.location('pathname').should('match', /\/character\/\d+\/comics/)
   })
