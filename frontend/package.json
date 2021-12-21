@@ -1,5 +1,9 @@
 {
-  "name": "app",
+  "name": "marvel-strike-team",
+  "author": {
+    "name": "Lucas Felipe Timoteo",
+    "email": "lucasfelipetimoteo@gmail.com"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
