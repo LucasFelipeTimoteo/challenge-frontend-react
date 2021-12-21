@@ -95,6 +95,7 @@ npm run test:all
 - Avoid running Integration/E2E tests if your Internet connection is not stable as this could result in unexpected errors
 - Avoid interacting with the application from within the test browser while the integration/E2E tests are running
 - To manually test some functionality, prefer to use the real application running in your browser
+- If an Integration/E2E test unexpectedly failed try running the tests again
 
 5. Integration/E2E interface (Cypress interface)
 - When running the Integration/E2E tests, the following interface will appear:
