@@ -64,12 +64,23 @@ npm install
 
 ## 🔥 Get Started
 
-1. Go to project folder
+1. Authentication to get data from Marvel
+- Create your account in https://developer.marvel.com/
+- Get your private and public keys in https://developer.marvel.com/account
+- Create a file called **.env** inside **frontend** folder
+- Add your public key, private key and limit=20 to the file this way:
+```
+REACT_APP_API_PRIVATE_KEY=YOUR PRIVATE KEY
+REACT_APP_API_PUBLIC_KEY=YOUR PUBLIC KEY
+REACT_APP_API_LIMIT=20
+```
+
+2. Go to project folder
 ```Bash
 cd frontend
 ```
 
-2. Start React app 
+3. Start React app 
 ```Bash
 npm start
 ```
