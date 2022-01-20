@@ -2,39 +2,39 @@ import { storagePathOptions } from "../../types"
 
 const getCurrentStorage = (storagePath: storagePathOptions, optionalItemIdParam: number | null) => {
   const defaultPathFragment = 'MARVEL_STRIKE_TEAM_'
-  let favoriteCharactersStoragePath = ''
+  let currentPathFrangment = ''
 
   if (storagePath === 'favoriteCharacters') {
     const currentPathFragment = "FETCHED_CHARACTERS_FAVORITES"
-    favoriteCharactersStoragePath = defaultPathFragment + currentPathFragment
+    currentPathFrangment = defaultPathFragment + currentPathFragment
   }
 
   if (storagePath === 'characters') {
     const currentPathFragment = "FETCHED_CHARACTERS"
-    favoriteCharactersStoragePath = defaultPathFragment + currentPathFragment
+    currentPathFrangment = defaultPathFragment + currentPathFragment
   }
 
   if (storagePath === 'charactersCount') {
     const currentPathFragment = "FETCHED_CHARACTERS_RESULTS_COUNT"
-    favoriteCharactersStoragePath = defaultPathFragment + currentPathFragment
+    currentPathFrangment = defaultPathFragment + currentPathFragment
   }
 
   if (storagePath === 'selectedCharacter') {
     const currentPathFragment = "SELECTED_CHARACTER"
-    favoriteCharactersStoragePath = defaultPathFragment + currentPathFragment
+    currentPathFrangment = defaultPathFragment + currentPathFragment
   }
 
   if(storagePath === 'comics' && optionalItemIdParam) {
     const currentPathFragment = `FETCHED_${optionalItemIdParam}_COMICS`
-    favoriteCharactersStoragePath = defaultPathFragment + currentPathFragment
+    currentPathFrangment = defaultPathFragment + currentPathFragment
   }
 
   if(storagePath === 'comicsResultsNumber' && optionalItemIdParam) {
     const currentPathFragment = `FETCHED_${optionalItemIdParam}_COMICS_RESULTS_NUMBER`
-    favoriteCharactersStoragePath = defaultPathFragment + currentPathFragment
+    currentPathFrangment = defaultPathFragment + currentPathFragment
   }
   
-  return favoriteCharactersStoragePath
+  return currentPathFrangment
 }
 
 export default getCurrentStorage
